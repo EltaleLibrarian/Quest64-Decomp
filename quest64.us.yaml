@@ -74,7 +74,7 @@ segments:
     symbol_name_format: $VRAM
     subsegments:
       - [0x1050, asm, init]
-      - [0x1130, asm, nnsched]
+      - [0x1130, c, nnsched]
       - [0x1850, c, 1850]
       - [0x33D0, c, 33D0]
       - [0x8650, c, 8650]
@@ -189,7 +189,7 @@ segments:
       - [0x3D5B0, c, setfpccsr]
       - [0x3D5C0, c, sprawread]
       - [0x3D610, c, sprawwrite]
-      - [0x3D660, c, os/exceptasm] #ASM
+      - [0x3D660, asm, os/exceptasm] #ASM
       - [0x3DF70, c, maptlbrdb]
       - [0x3DFD0, c, pirawread]
       - [0x3E030, c, bzero]
@@ -301,7 +301,7 @@ segments:
       - [0x72810, .rodata, os/csplayer]
       - [0x72A50, .rodata, cseq]
       - [0x72A60, .rodata, sndplayer]
-      - [0x72AA0, .rodata, os/exceptasm]
+      - [0x72AA0, rodata, os/exceptasm]
       - [0x72AF0, .rodata, devmgr]
       - [0x72B10, rodata, __mlib_qnan_f]
       - [0x72B20, .rodata, xprintf]

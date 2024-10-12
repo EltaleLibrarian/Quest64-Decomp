@@ -32,8 +32,8 @@ void func_8001D8B0(PlayerPosData* player, s32 next_anim, s32 next_anim_framerate
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001E0AC.s")
 void func_8001E0AC(s32 arg0, PlayerPosData* arg1, unk1E0ACarg2s* arg2) {
-  s32 temp_v0;
-  temp_v0 = arg1->currentAnimFrame += arg0;
+  s32 temp_v0 = arg1->currentAnimFrame += arg0;
+
   if (temp_v0 >= arg2->unk2)
   {
     if (arg1->currentAnimID != arg1->unk5A)
@@ -41,18 +41,18 @@ void func_8001E0AC(s32 arg0, PlayerPosData* arg1, unk1E0ACarg2s* arg2) {
       arg1->currentAnimID = arg1->unk5A;
       arg1->currentAnimFrame = 0U;
       arg1->totalAnimFrames = 0U;
-      arg1->animFramerate = (u16) arg1->unk5C;
-      (*arg1).unk60 = (u16) (arg1->unk60 | 0x400);
+      arg1->animFramerate = arg1->unk5C; //unk5C should probably be called newFramerate
+      arg1->unk60 |= 0x400;
     }
     else
     {
-      arg1->currentAnimFrame = (u16) (temp_v0 - arg2->unk2);
-      arg1->unk60 = (u16) (arg1->unk60 | 0x200);
+      arg1->currentAnimFrame = temp_v0 - arg2->unk2;
+      arg1->unk60 |= 0x200;
     }
   }
   else
   {
-    arg1->unk60 = (u16) (arg1->unk60 & 0xF9FF);
+    arg1->unk60 &= 0xF9FF;
   }
   arg1->totalAnimFrames++;
 }
