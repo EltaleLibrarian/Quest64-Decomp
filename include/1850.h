@@ -1,6 +1,20 @@
 #ifndef _1850_H
 #define _1850_H
 
+#include "sched.h"
+
+#ifndef _UINTPTR_T
+    #define _UINTPTR_T
+    typedef unsigned            uintptr_t;
+#endif
+
+typedef struct {
+    OSScTask task;
+    char unk58[0xD0F0];
+    OSMesg unkD148;
+    void *unkD14C; 
+}unk111Cs;
+
 //unsorted symbols
 extern s32 gGameState;
 extern s16 gGameMode;

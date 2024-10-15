@@ -1,9 +1,11 @@
 {
     "files.associations": {
+        "*.asm": "gbz80",
         "common.h": "c",
         "ultra64.h": "c",
         "common_structs.h": "c",
         "libaudio.h": "c",
-        "ultratypes.h": "c"
+        "ultratypes.h": "c",
+        "10c80.h": "c"
     }
 }

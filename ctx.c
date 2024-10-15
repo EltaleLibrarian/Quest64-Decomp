@@ -1850,6 +1850,7 @@
 #define gSPLoadUcode(pkt,uc_start,uc_dstart) gSPLoadUcodeEx((pkt), (uc_start), (uc_dstart), SP_UCODE_DATA_SIZE)
 #define SR_BEV 0x00400000
 #define VI_V_BURST_REG (VI_BASE_REG+0x2C)
+#define _10C80_H_ 
 #define CONT_TYPE_NORMAL 0x0005
 #define OS_VI_NTSC_HAN1 10
 #define SP_DMEM_END 0x04000FFF
@@ -1898,7 +1899,6 @@
 #define CONT_EEPROM_BUSY 0x80
 #define CHNL_ERR_COLLISION 0x40
 #define AL_PAN_CENTER 64
-#define _33D0_H_ 
 #define PHYS_TO_K0(x) ((u32)(x)|0x80000000)
 #define PHYS_TO_K1(x) ((u32)(x)|0xA0000000)
 #define G_MWO_POINT_ST 0x14
@@ -3847,110 +3847,26 @@ typedef struct {
 Vec3f pos;
 Vec3f rot;
 } PosRot;
-typedef struct {
-    u16 map;
-    u16 submap;
-    f32 x;
-    f32 z;
-    f32 yrot;
-}SaveSpawnLocation;
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    u16 unkC;
-    char unkE[2];
-    s32 unk10;
-    f32 unk14;
-}unk80085368;
-typedef struct PlayerMainData{
-             u16 unk0;
-             s16 unk2;
-             u16 currHP;
-             u16 maxHP;
-             u16 currMP;
-             u16 maxMP;
-             u16 agi;
-             u16 def;
-             s32 exp;
-             s32 stone;
-             f32 collisionSize;
-             f32 unk1C;
-             f32 unk20;
-             u8 elements[4];
-             u16 HPXP;
-             u16 MPXP;
-             u16 agiXP;
-             u16 defXP;
-             u8 HPLevel;
-             u8 MPLevel;
-             u8 agiLevel;
-             u8 defLevel;
-             u8 spiritLevel;
-             u8 unk35;
-             u8 unk36;
-             u8 unk37;
-             u16 unk38;
-             s16 unk3A;
-             s16 unk3C;
-             s16 unk3E;
-             u16 unk40;
-             s16 unk42;
-             char unk44[0x4];
-             void* PlayerMainData;
-}PlayerMainData;
-typedef struct {
-             PosRot posrot;
-             Vec3f speed;
-             f32 scale;
-             f32 shadowScale;
-             Vec3f shadowRot;
-             f32 unk38;
-             f32 unk3C;
-             f32 unk40;
-             f32 unk44;
-             f32 unk48;
-             f32 unk4C;
-             s16 unk50;
-             s16 currentAnimID;
-             s16 currentAnimFrame;
-             u16 totalAnimFrames;
-             u16 animFramerate;
-             s16 unk5A;
-             s16 unk5C;
-             s16 unk5E;
-             u16 unk60;
-             u16 unk62;
-             PlayerMainData* playerMainData;
-             void* playerStatusPtr;
-             u8 status[7];
-}PlayerPosData;
-extern SaveSpawnLocation gSaveSpawnLocationTbl[17];
-extern unk80085368 D_80085368;
-extern PlayerMainData gPlayerMainData;
-extern PlayerPosData gPlayerData1;
-void func_80002EA0(void);
-void func_8001D8B0(PlayerPosData* player, s32 next_anim, s32 next_anim_framerate, s32 arg3, s32 arg4, u16 arg5) {
-    if (next_anim != -1) {
-        if (next_anim != player->currentAnimID) {
-            player->currentAnimID = next_anim;
-            player->unk60 = player->unk60 | 0x400;
-            player->unk60 = player->unk60 & 0xFDFF;
-        }
-        player->animFramerate = next_anim_framerate;
-        if (arg5 & 1) {
-            player->currentAnimFrame = player->totalAnimFrames = 0;
-        }
-    }
-    if (arg3 != -1) {
-        if (arg3 != player->unk5A) {
-            player->unk5A = arg3;
-        }
-        player->unk5C = arg4;
-    }
-}
-#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001D924.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001DB38.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001DC78.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001E0AC.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001E138.s")
+extern s32 gCurrentTime;
+extern s32 gDayLength;
+extern u16 gCurrentDay;
+extern s32 D_8008C634;
+extern s32 D_80085B68[4][3];
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010080.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800100D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010150.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800102D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010510.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010564.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010B58.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010CAC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010E70.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010EC4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800110D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011100.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011150.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011170.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111D8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111F8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011768.s")
