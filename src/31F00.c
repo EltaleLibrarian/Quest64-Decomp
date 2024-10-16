@@ -1,5 +1,5 @@
 #include "common.h"
-#include "os.h"
+#include "31F00.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
 
@@ -17,7 +17,36 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031A44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031ACC.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031ACC.s")
+/*initializes devices such as the rumble pak and the controller pak and returns an error ID if there is one.*/
+s32 initPFSPaks(s32 arg0, s32 arg1)
+{
+    s32 con_error;
+    u32 con_num;
+  
+  
+  con_num = gCurrControllerNum;
+  if (arg1 == 0xA)
+  {
+    if (osMotorInit(&gSIMessageQ, &gPFS[con_num], con_num) != 0)
+    {
+      con_error = osPfsinitPFSPaks(&gSIMessageQ, &gPFS[con_num], con_num);
+      if (((con_error != PFS_ERR_DEVICE) && (con_error != PFS_ERR_NOPACK)) && (con_error != PFS_ERR_NEW_PACK))
+      {
+        con_error = func_8003C530(&gPFS[con_num]);
+      }
+    }
+    else
+    {
+      con_error = 4;
+    }
+  }
+  else
+  {
+    con_error = osPfsinitPFSPaks(&gSIMessageQ, &gPFS[con_num], con_num);
+  }
+  return con_error;
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
 s32 func_80031BB0(s32 arg0) {
