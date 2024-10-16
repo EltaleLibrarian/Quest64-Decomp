@@ -1850,7 +1850,6 @@
 #define gSPLoadUcode(pkt,uc_start,uc_dstart) gSPLoadUcodeEx((pkt), (uc_start), (uc_dstart), SP_UCODE_DATA_SIZE)
 #define SR_BEV 0x00400000
 #define VI_V_BURST_REG (VI_BASE_REG+0x2C)
-#define _10C80_H_ 
 #define CONT_TYPE_NORMAL 0x0005
 #define OS_VI_NTSC_HAN1 10
 #define SP_DMEM_END 0x04000FFF
@@ -3847,26 +3846,14 @@ typedef struct {
 Vec3f pos;
 Vec3f rot;
 } PosRot;
-extern s32 gCurrentTime;
-extern s32 gDayLength;
-extern u16 gCurrentDay;
-extern s32 D_8008C634;
-extern s32 D_80085B68[4][3];
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010080.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800100D0.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010150.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800102D0.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010510.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010564.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010B58.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010CAC.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010E70.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010EC4.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800110D0.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011100.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011150.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011170.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111A4.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111D8.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111F8.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80011768.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800314C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031574.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031800.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031890.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_8003195C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800319E0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031A44.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031ACC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031BB0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031C0C.s")

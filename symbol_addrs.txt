@@ -64,6 +64,21 @@ guMtxIdent                = 0x80035388; //rom:0x35F88 type:func
 
 D_80049EF0                = 0x80049EF0;
 D_80049FC0                = 0x80049FC0;
+__osSiGetAccess           = 0x80044840;
+__osSiRelAccess           = 0x80044884;
+__osPfsSelectBank         = 0x800457dc;
+__osIdCheckSum            = 0x80044b4c;
+__osCheckPackId           = 0x80044fcc;
+__osRepairPackId          = 0x80044bb4;
+__osContRamRead           = 0x80045850;
+osPfsChecker              = 0x80045bb0;
+__osPackRamReadData       = 0x80045a6c;
+__osSumcalc               = 0x80044af0;
+__osGetId				  = 0x80045164;
+__osCheckId               = 0x800453c0;
+__osPfsRWInode            = 0x800454bc;
+__osPfsGetStatus          = 0x800448b0;
+
 
 
 gMasterGfxPos             = 0x8007B2FC;
@@ -118,6 +133,8 @@ gDayLength				  = 0x800859d4; //type:s32 size:0x4
 gCurrentDay				  = 0x800859e0; //type:u16 size:0x2
 D_8008C634                = 0x8008C634; //type:s32 size:0x4
 D_800859D8                = 0x800859D8; //type:s32 size:0x4
+
+
 
 osViSetEvent = 0x80033F40; //rom:0x34B40
 osSetEventMesg = 0x80033FB0; //rom:0x34BB0

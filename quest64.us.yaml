@@ -170,7 +170,7 @@ segments:
       - [0x3A610, c, sndpsetvol]
       - [0x3A670, c, sndpsetpan]
       - [0x3A6D0, c, ll]
-      - [0x3A990, c, pfsinitPFSPaks]
+      - [0x3A990, c, os/pfsinitPFSPaks]
       - [0x3AC00, c, motor]
       - [0x3B3A0, c, os/syncprintf]
       - [0x3B3E0, c, os/controller]

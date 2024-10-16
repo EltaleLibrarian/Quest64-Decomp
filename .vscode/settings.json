@@ -6,6 +6,7 @@
         "common_structs.h": "c",
         "libaudio.h": "c",
         "ultratypes.h": "c",
-        "10c80.h": "c"
+        "10c80.h": "c",
+        "controller.h": "c"
     }
 }

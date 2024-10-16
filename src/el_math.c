@@ -6,7 +6,7 @@ u32 RNG(u32 MAX)
 {
   if (MAX != 0)
   {
-    return ((u32) ((gRNG = (gRNG * 0x41C64E6D) + 0x3039) >> 0x10)) % MAX;
+    return (((gRNG = (gRNG * 0x41C64E6D) + 0x3039) >> 0x10)) % MAX;
   }
   return 0U;
 }

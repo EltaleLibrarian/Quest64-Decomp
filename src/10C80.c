@@ -59,7 +59,10 @@ void func_80010510(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111D8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111D8.s")
+void func_800111D8(s32 arg0, s32 arg1) {
+    D_80085A14[arg0].unk0[0] = arg1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111F8.s")
 
