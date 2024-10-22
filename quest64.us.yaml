@@ -1,0 +1,377 @@
+name: Quest 64 (North America)
+sha1: 91b96e938c6d91699057fad91d726ee5a23ce33a
+options:
+  basename: quest64
+  target_path: baserom.us.z64
+  elf_path: build/quest64.elf
+  base_path: .
+  platform: n64
+  compiler: IDO
+
+  # asm_path: asm
+  # src_path: src
+  # build_path: build
+  # create_asm_dependencies: True
+  ld_symbol_header_path: include/ld_addrs.h
+  ld_script_path: quest64.ld
+  ld_dependencies: True
+  ld_generate_symbol_per_data_segment: False
+  
+  find_file_boundaries: True
+  header_encoding: ASCII
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+  # mips_abi_float_regs: o32
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+  migrate_rodata_to_functions : True
+
+  # section_order: [".text", ".data", ".rodata", ".bss"]
+  # auto_all_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - symbol_addrs.txt
+  reloc_addrs_path:
+    - reloc_addrs.txt
+
+  # undefined_funcs_auto_path: undefined_funcs_auto.txt
+  # undefined_syms_auto_path: undefined_syms_auto.txt
+
+  extensions_path: tools/splat_ext
+
+  # string_encoding: ASCII
+  # data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+  # libultra_symbols: True
+  # hardware_regs: True
+  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+segments:
+  - name: header
+    type: databin
+    start: 0x0
+
+  - name: boot
+    type: databin
+    start: 0x40
+
+  - name: entry
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    subsegments:
+      - [0x1000, hasm]
+
+  - name: main
+    type: code
+    start: 0x1050
+    vram: 0x80000450
+    follows_vram: entry
+    bss_size: 0x239C0
+    symbol_name_format: $VRAM
+    subsegments:
+      - [0x1050, asm, init]
+      - [0x1130, c, nnsched]
+      - [0x1850, c, 1850]
+      - [0x33D0, c, 33D0]
+      - [0x8650, c, 8650]
+      - [0x97B0, c, 97B0]
+      - [0xC120, c, C120]
+      - [0xC910, c, C910]
+      - [0xFA60, c, FA60]
+      - [0x10C80, c, 10C80]
+      - [0x12450, c, shadow]
+      - [0x12740, c, 12740]
+      - [0x15440, c, 15440]
+      - [0x191F0, c, 191F0]
+      - [0x1BCD0, c, 1BCD0]
+      - [0x1D160, c, 1D160]
+      - [0x1E4B0, c, 1E4B0]
+      - [0x1EDF0, c, hud]
+      - [0x21D70, c, inventory]
+      - [0x234E0, c, screen_dim]
+      - [0x23740, asm]
+      - [0x23BD0, c, el_math]
+      - [0x24E60, asm]
+      - [0x25290, c, 25290]
+      - [0x271F0, c, bgm]
+      - [0x27640, c, 27640]
+      - [0x2C110, c, 2C110]
+      - [0x2F1E0, c, 2F1E0]
+      - [0x31A10, asm]
+      - [0x31F00, c, 31F00]
+      - [0x32840, asm]
+      - [0x328F0, c, 328F0]
+      - [0x34450, c, os/initialize]
+      - [0x346E0, c, os/createthread]
+      - [0x34830, c, os/startthread]
+      - [0x34980, c, os/pimgr]
+      - [0x34B10, c, os/createmesgqueue]
+      - [0x34B40, c, os/visetevent]
+      - [0x34BB0, c, os/seteventmesg]
+      - [0x34C20, c, os/recvmesg]
+      - [0x34D60, hasm, os/setintmask]
+      - [0x34E00, c, os/sendmesg]
+      - [0x34F50, hasm, os/writebackdcacheall]
+      - [0x34F80, c, os/sptaskyield]
+      - [0x34FA0, c, os/sptaskyielded] 
+      - [0x35020, c, os/sptask]
+      - [0x352E0, c, os/viblack]
+      - [0x35350, c, os/viswapbuf]
+      - [0x353A0, c, os/vigetcurrframebuf]
+      - [0x35440, c, os/vimgr]
+      - [0x357A0, c, os/visetmode]
+      - [0x35810, c, os/visetspecial]
+      - [0x359D0, c, os/virtualtophysical]
+      - [0x35A50, hasm, os/writebackdcache]
+      - [0x35AD0, c, os/gettime]
+      - [0x35B60, hasm, gu/sqrtf]
+      - [0x35B70, c, gu/position]
+      - [0x35D90, c, sins]
+      - [0x35E00, c, mtxutil]
+      - [0x36070, c, mtxcatf]
+      - [0x36280, c, sinf]
+      - [0x36440, c, ortho]
+      - [0x36600, c, perspective]
+      - [0x36890, c, lookatref]
+      - [0x36D50, c, translate]
+      - [0x36DF0, c, cosf]
+      - [0x36F60, c, sprintf]
+      - [0x36FE0, c, invalicache]
+      - [0x37060, c, invaldcache]
+      - [0x37110, c, pidma]
+      - [0x37220, c, heapinit]
+      - [0x37260, c, heapalloc]
+      - [0x372C0, c, aisetfreq]
+      - [0x37420, c, sl]
+      - [0x374E0, c, seqpsetvol]
+      - [0x37520, c, synthesizer]
+      - [0x37C00, c, os/aigetlen]
+      - [0x37C10, c, aisetnextbuf]
+      - [0x37CC0, c, n_alseqpgetvol]
+      - [0x37CD0, c, os/csplayer]
+      - [0x38F00, c, bnkf]
+      - [0x39150, c, seqpsetbank]
+      - [0x39190, c, cseq]
+      - [0x39C50, c, cspsetseq]
+      - [0x39C90, c, seqpplay]
+      - [0x39CC0, c, seqpstop]
+      - [0x39CF0, c, os/seqpgetstate]
+      - [0x39D00, c, sndplayer]
+      - [0x3A410, c, sndpallocate]
+      - [0x3A4B0, c, sndpsetsound]
+      - [0x3A4D0, c, sndpgetstate]
+      - [0x3A4F0, c, sndplay]
+      - [0x3A560, c, sndpstop]
+      - [0x3A5B0, c, sndpsetpitch]
+      - [0x3A610, c, sndpsetvol]
+      - [0x3A670, c, sndpsetpan]
+      - [0x3A6D0, c, ll]
+      - [0x3A990, c, os/O1/pfsinitPFSPaks]
+      - [0x3AC00, c, motor]
+      - [0x3B3A0, c, os/syncprintf]
+      - [0x3B3E0, c, os/controller]
+      - [0x3B7A0, c, contsetch]
+      - [0x3B810, c, contreaddata]
+      - [0x3BA30, c, os/pfsfilestate]
+      - [0x3BD20, c, os/pfsfreeblocks]
+      - [0x3BE70, c, os/pfsallocatefile]
+      - [0x3C620, c, os/pfsdeletefile]
+      - [0x3CC30, c, os/pfsreadwritefile]
+      - [0x3D130, c, __osGetId]
+      - [0x3D390, c, os/pfsnumfiles]
+      - [0x3D4E0, c, contquery]
+      - [0x3D590, c, setsr]
+      - [0x3D5A0, c, getsr]
+      - [0x3D5B0, c, setfpccsr]
+      - [0x3D5C0, c, sprawread]
+      - [0x3D610, c, sprawwrite]
+      - [0x3D660, asm, os/exceptasm] #ASM
+      - [0x3DF70, c, maptlbrdb]
+      - [0x3DFD0, c, pirawread]
+      - [0x3E030, c, bzero]
+      - [0x3E0D0, c, interrupt]
+      - [0x3E110, c, thread]
+      - [0x3E150, c, cartrominit]
+      - [0x3E250, c, os/leodiskinit]
+      - [0x3E350, c, siacsDuplicate]
+      - [0x3E410, c, getthreadpri]
+      - [0x3E430, c, setthreadpri]
+      - [0x3E510, c, pirawdma]
+      - [0x3E5F0, c, epiramdma]
+      - [0x3E820, c, devmgr]
+      - [0x3ECB0, c, vi]
+      - [0x3EDF0, c, spsetstat]
+      - [0x3EE00, c, spgetstat]
+      - [0x3EE10, c, bcopy]
+      - [0x3F120, c, spsetpc]
+      - [0x3F160, c, sprawdma]
+      - [0x3F1F0, c, sp]
+      - [0x3F220, c, timerintr]
+      - [0x3F620, c, vigetcurrcontext]
+      - [0x3F630, c, viswapcontext]
+      - [0x3F990, hasm, getcount]
+      - [0x3F9A0, c, probetlb]
+      - [0x3FA60, c, xprintf]
+      - [0x40720, c, string]
+      - [0x407C0, c, jammesg]
+      - [0x40940, c, syndelete]
+      - [0x40950, c, event]
+      - [0x40C90, c, drvrNew]
+      - [0x41430, c, synallocfx]
+      - [0x414D0, c, mainbus]
+      - [0x41620, c, load]
+      - [0x42170, c, resample]
+      - [0x42470, c, env]
+      - [0x430D0, c, auxbus]
+      - [0x431E0, c, save]
+      - [0x432A0, c, ai]
+      - [0x432D0, c, seqplayer]
+      - [0x44C10, c, synaddplayer]
+      - [0x44C60, c, synstopvoice]
+      - [0x44CE0, c, synfreevoice]
+      - [0x44D90, c, synsetvol]
+      - [0x44E30, c, synsetpitch]
+      - [0x44EC0, c, synallocvoice]
+      - [0x450F0, c, cents2ratio]
+      - [0x45140, c, synstartvoiceparam]
+      - [0x45230, c, synsetpan]
+      - [0x452C0, c, synsetfxmix]
+      - [0x45360, c, synstartvoice]
+      - [0x453F0, c, siacs]
+      - [0x454B0, c, os/pfsgetstatus]
+      - [0x456F0, c, os/contpfs]
+      - [0x46450, c, os/contramread]
+      - [0x467B0, c, os/pfschecker]
+      - [0x47210, c, os/pfsisplug]
+      - [0x47550, c, sirawdma]
+      - [0x47600, c, crc]
+      - [0x47780, c, contramwrite]
+      - [0x47AE0, c, settimer]
+      - [0x47BC0, c, os/pfssearchfile]
+      - [0x47D80, c, si]
+      - [0x47DB0, c, leointerrupt]
+      - [0x48630, c, destroythread]
+      - [0x48730, c, resetglobalintmask]
+      - [0x48790, c, epirawwrite]
+      - [0x487E0, c, epirawread]
+      - [0x48830, c, setglobalintmask]
+      - [0x48880, c, yieldthread]
+      - [0x488D0, c, setcompare]
+      - [0x488E0, c, xlitob]
+      - [0x48B80, c, xldtob]
+      - [0x49640, c, copy]
+      - [0x496C0, c, filter]
+      - [0x496E0, c, reverb]
+      - [0x4A330, c, seq]
+      - [0x4A950, c, synsetpriority]
+      - [0x4AAF0, data, rspBootText]
+      - [0x4ABC0, databin, gspF3DEX2kawase_fifo_text] #80049FC0
+      - [0x4AD20, data]
+      - [0x71AF0, .rodata, 1850]
+      - [0x71B10, .rodata, 33D0]
+      - [0x71D10, .rodata, 8650]
+      - [0x71D50, .rodata, 97B0]
+      - [0x71DD0, .rodata, C120]
+      - [0x71DF0, .rodata, C910]
+      - [0x71E60, .rodata, FA60]
+      - [0x71EB0, .rodata, 10C80]
+      - [0x71EC0, .rodata, 12740]
+      - [0x72090, .rodata, 15440]
+      - [0x72130, .rodata, 191F0]
+      - [0x721F0, .rodata, 1BCD0]
+      - [0x72210, .rodata, 1D160]
+      - [0x722A0, .rodata, hud]
+      - [0x722D0, .rodata, el_math]
+      - [0x72300, .rodata, 25290]
+      - [0x72330, .rodata, 27640]
+      - [0x72350, .rodata, 2C110]
+      - [0x725D0, .rodata, 2F1E0]
+      - [0x72650, .rodata, 31F00]
+      - [0x72680, .rodata, 328F0]
+      - [0x726B0, .rodata, gu/position]
+      - [0x72740, .rodata, sinf]
+      - [0x72790, .rodata, perspective]
+      - [0x727A0, .rodata, lookatref]
+      - [0x727B0, .rodata, cosf]
+      - [0x72800, .rodata, synthesizer]
+      - [0x72810, .rodata, os/csplayer]
+      - [0x72A50, .rodata, cseq]
+      - [0x72A60, .rodata, sndplayer]
+      - [0x72AA0, rodata, os/exceptasm]
+      - [0x72AF0, .rodata, devmgr]
+      - [0x72B10, rodata, __mlib_qnan_f]
+      - [0x72B20, .rodata, xprintf]
+      - [0x72C20, .rodata, drvrNew]
+      - [0x72C40, .rodata, resample]
+      - [0x72C80, .rodata, env]
+      - [0x72CE0, .rodata, seqplayer]
+      - [0x72F20, .rodata, cents2ratio]
+      - [0x72F30, .rodata, xldtob]
+      - [0x72F90, .rodata, reverb]
+      - [0x72FC0, .rodata, seq]
+      - [0x72FD0, rodata, ucode_data]
+      - [0x737D0, rodata]
+      - { start: 0x73A90, type: bss, vram: 0x80072E90 }
+
+  - type: databin
+    start: 0x73A90
+    name: unkData
+    follows_vram: main
+    subsegments:
+      - [0x73A90, databin]
+
+  - name: ovl_title
+    exclusive_ram_id: overlay
+    type: code
+    dir: overlays/title
+    start: 0xDA68F0
+    vram: 0x80100000
+    symbol_name_format: $VRAM_$SEG
+    subsegments:
+    - [0xDA68F0, c, DA68F0]
+    - [0xDA9A00, data]
+    - [0xDC15C0, .rodata, DA68F0]
+
+  - name: ovl_intro
+    exclusive_ram_id: overlay
+    type: code
+    dir: overlays/intro
+    start: 0xDC1620
+    vram: 0x80100000
+    symbol_name_format: $VRAM_$SEG
+    subsegments:
+    - [0xDC1620, c, DC1620]
+    - [0xDC4700, c, DC4700]
+    - [0xDC7820, data]
+    - [0xDC7860, data]
+    - [0xE27810, .rodata, DC1620]
+
+  - name: ovl_ending
+    exclusive_ram_id: overlay
+    type: code
+    dir: overlays/ending
+    start: 0xE27840
+    vram: 0x80100000
+    symbol_name_format: $VRAM_$SEG
+    subsegments:
+    - [0xE27840, c]
+    - [0xE2ADE0, data]
+
+  - name: sound_data
+    type: databin
+    dir: sound/
+    start: 0xE7E800
+    vram: 0x8037A480
+    subsegments:
+    - [0xE7E800, databin, instrument_ctl]
+    - [0xE81610, databin, instrument_tbl]
+    - [0xEEE020, databin, SE_ctl]
+    - [0xEEFCE0, databin, SE_tbl]
+  
+  - [0xF94380, databin, rompad] #0xFFs til the end
+
+  - [0x1000000]
