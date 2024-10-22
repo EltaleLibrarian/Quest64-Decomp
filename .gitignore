@@ -3,6 +3,9 @@ assets/
 build/
 expected/
 nonmatchings/
+__pycache__/
+.vscode/
+ctx.c
 .ninja_log
 .splache
 baserom.us.z64
