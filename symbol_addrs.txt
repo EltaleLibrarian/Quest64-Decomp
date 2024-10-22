@@ -17,6 +17,7 @@ nnScWaitTaskReady         = 0x80000BB4;
 RNG                       = 0x80022FD0; //rom:0x23BD0 type:func
 calc_arctan_in_radians    = 0x80023028; //rom:0x23C28 type:func
 rotateCoordinatesByAngle  = 0x800232F4; //rom:0x23EF4 type:func
+dma_write                 = 0x80024260; //type:func
 UpdateBGM                 = 0x800267B8; //rom:0x273B8
 
 
@@ -136,6 +137,7 @@ osPfsFindFile             = 0x80046fc0;
 rspBootText               = 0x80049EF0; // rom:0x4AAF0
 gspF3DEX2kawase_fifo_text = 0x80049FC0; // rom:0x4ABC0
 
+D_8004D740                = 0x8004D740; 
 gRNG                      = 0x8004D748; //type:u32 size:0x4
 
 gSaveSpawnLocationTbl     = 0x80054048;
@@ -154,8 +156,11 @@ gMasterGfxPos             = 0x8007B2FC;
 gPlayerMainData           = 0x8007BA80; //size:0x4C
 gPlayerData1              = 0x8007BACC; //size:0x73
 gNPCData                  = 0x8007BD30; //size:0x840
+
 gMessageBuffer            = 0x8007C570; //size:0x400
 gNPCName                  = 0x8007C970; //size:0x20
+
+D_8007D1A0                = 0x8007D1A0; //type:s32 size:0x4
 
 D_80082910                = 0x80082910; //size:0x60
 
@@ -189,6 +194,10 @@ gPFS                      = 0x80092898;
 
 
 
+gBossVAddr                = 0x802A7BC0; //size:0x4
+
+gBossFileOffsetTbl        = 0x803A9A90;
+gBossData                 = 0x803A9AD0;
 
 
 //overlay vars
