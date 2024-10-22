@@ -30,10 +30,10 @@ s32 initPFSPaks(s32 arg0, s32 arg1)
   {
     if (osMotorInit(&gSIMessageQ, &gPFS[con_num], con_num) != 0)
     {
-      con_error = osPfsinitPFSPaks(&gSIMessageQ, &gPFS[con_num], con_num);
+      con_error = osPfsInitPak(&gSIMessageQ, &gPFS[con_num], con_num);
       if (((con_error != PFS_ERR_DEVICE) && (con_error != PFS_ERR_NOPACK)) && (con_error != PFS_ERR_NEW_PACK))
       {
-        con_error = func_8003C530(&gPFS[con_num]);
+        con_error = __osGetID(&gPFS[con_num]);
       }
     }
     else
@@ -43,7 +43,7 @@ s32 initPFSPaks(s32 arg0, s32 arg1)
   }
   else
   {
-    con_error = osPfsinitPFSPaks(&gSIMessageQ, &gPFS[con_num], con_num);
+    con_error = osPfsInitPak(&gSIMessageQ, &gPFS[con_num], con_num);
   }
   return con_error;
 }

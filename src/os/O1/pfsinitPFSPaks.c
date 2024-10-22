@@ -1,3 +1,3 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/O1/pfsinitPFSPaks/osPfsinitPFSPaks.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/O1/pfsinitPFSPaks/osPfsInitPak.s")
