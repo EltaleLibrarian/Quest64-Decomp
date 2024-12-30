@@ -26,6 +26,8 @@ typedef struct Coordinates2D_s{
 extern u32 gRNG;
 extern MtxF D_8008D030;
 
+u32 RNG(u32 MAX);
+
 void func_80023A08(MtxF* arg0, f32 arg1, f32 arg2, f32 arg3);
 
 #endif

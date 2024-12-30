@@ -43,6 +43,10 @@ LIB_COMPILE_CMD = (
     f"{LIB_CC_DIR} -c -B {LIB_CC_DIR}/ee- {COMMON_INCLUDES} -O2 -G0"
 )
 
+GAME_O1_COMPILE_CMD = (
+    f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O1 -g0"
+)
+
 def exec_shell(command: List[str]) -> str:
     ret = subprocess.run(
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
@@ -154,6 +158,12 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         command=f"{cross}objcopy $in $out -O binary",
     )
 
+    ninja.rule(
+        "cc_o1",
+        description="cc (O1) $in",
+        command=f"{GAME_O1_COMPILE_CMD} -o $out $in",
+    )
+
     for entry in linker_entries:
         seg = entry.segment
 
@@ -174,6 +184,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_ENDING_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
+            elif any(str(src_path).startswith("os/O1/") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "cc_o1")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):

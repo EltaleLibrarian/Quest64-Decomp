@@ -4,6 +4,7 @@ build/
 expected/
 nonmatchings/
 .vscode/
+myenv/
 ctx.c
 .ninja_log
 .splache

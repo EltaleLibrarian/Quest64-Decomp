@@ -1,4 +1,6 @@
-#include "common.h"
+#include <os_internal.h>
+#include "controller.h"
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/contpfs/__osSumcalc.s")
 

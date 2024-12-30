@@ -22,7 +22,7 @@ options:
 
   o_as_suffix: True
   use_legacy_include_asm: False
-  # mips_abi_float_regs: o32
+  #mips_abi_float_regs: o32
 
   asm_function_macro: glabel
   asm_jtbl_label_macro: jlabel
@@ -149,7 +149,7 @@ segments:
       - [0x37420, c, sl]
       - [0x374E0, c, seqpsetvol]
       - [0x37520, c, synthesizer]
-      - [0x37C00, c, os/aigetlen]
+      - [0x37C00, c, os/O1/aigetlen]
       - [0x37C10, c, aisetnextbuf]
       - [0x37CC0, c, n_alseqpgetvol]
       - [0x37CD0, c, os/csplayer]
@@ -259,7 +259,7 @@ segments:
       - [0x48790, c, epirawwrite]
       - [0x487E0, c, epirawread]
       - [0x48830, c, setglobalintmask]
-      - [0x48880, c, yieldthread]
+      - [0x48880, c, os/yieldthread]
       - [0x488D0, c, setcompare]
       - [0x488E0, c, xlitob]
       - [0x48B80, c, xldtob]
