@@ -18,6 +18,7 @@ RNG                       = 0x80022FD0; //rom:0x23BD0 type:func
 calc_arctan_in_radians    = 0x80023028; //rom:0x23C28 type:func
 rotateCoordinatesByAngle  = 0x800232F4; //rom:0x23EF4 type:func
 dma_write                 = 0x80024260; //type:func
+count_digits              = 0x80024330; //type:func
 UpdateBGM                 = 0x800267B8; //rom:0x273B8
 
 
@@ -83,6 +84,9 @@ rmonPrintf                = 0x8003A7BC; //type:func
 osContInit                = 0x8003a7e0;
 __osContGetInitData       = 0x8003a9d8;
 __osPackRequestData       = 0x8003aaa8;
+osContSetCh               = 0x8003aba0;
+osContStartReadData       = 0x8003ac10;
+osContGetReadData         = 0x8003ac9c;
 osPfsFileState            = 0x8003ae30;
 
 osPfsFreeBlocks           = 0x8003b120;
@@ -136,6 +140,8 @@ osPfsFindFile             = 0x80046fc0;
 
 rspBootText               = 0x80049EF0; // rom:0x4AAF0
 gspF3DEX2kawase_fifo_text = 0x80049FC0; // rom:0x4ABC0
+
+D_8004C270                = 0x8004C270; //type:s32 size:0x4
 
 D_8004D740                = 0x8004D740; 
 gRNG                      = 0x8004D748; //type:u32 size:0x4
@@ -191,7 +197,7 @@ gCurrControllerNum        = 0x80092870; //type:s8 size:0x1
 gSIMessageQ               = 0x80092880;
 gPFS                      = 0x80092898;
 
-
+gPakMenuScroll            = 0x80092D0E; //type:u8 size:0x01
 
 
 gBossVAddr                = 0x802A7BC0; //size:0x4

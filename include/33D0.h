@@ -20,6 +20,11 @@ typedef struct {
     f32 unk14;
 }unk80085368;
 
+typedef struct {
+    s32 start;
+    s32 end;
+}fileBounds;
+
 typedef struct PlayerMainData{
     /*0x00*/ u16 unk0;
     /*0x02*/ s16 unk2;
@@ -54,7 +59,7 @@ typedef struct PlayerMainData{
     /*0x40*/ u16 unk40;
     /*0x42*/ s16 unk42;
     /*0x44*/ char unk44[0x4];
-    /*0x48*/ void* PlayerMainData;
+    /*0x48*/ void* PlayerMainData; //Seems to possibly be a pointer to either a monster, or the player. 
 }PlayerMainData;
 
 typedef struct {
@@ -89,6 +94,10 @@ extern SaveSpawnLocation gSaveSpawnLocationTbl[17];
 extern unk80085368 D_80085368;
 extern PlayerMainData gPlayerMainData;
 extern PlayerPosData gPlayerData1;
+extern fileBounds D_80053F58[];
+
+
+
 
 //functions
 void func_80002EA0(void);

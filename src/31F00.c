@@ -3,7 +3,24 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800314C0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800314C0.s")
+void func_800314C0(s32 arg0) {
+    OSContPad* temp_v0;
+    u16 temp_v1;
+
+    osContSetCh(4U);
+    osContStartReadData(&gSIMessageQ);
+    if (osRecvMesg(&gSIMessageQ, NULL, 1) != -1) {
+        osContGetReadData(&D_80092AA8);
+    }
+    temp_v0 = &(&D_80092AA8)[arg0];
+    temp_v1 = temp_v0->button;
+    D_80092874 = temp_v1;
+    D_80092871 = temp_v0->stick_x;
+    D_80092872 = temp_v0->stick_y;
+    D_80092876 = temp_v1 & D_80092878;
+    D_80092878 = ~temp_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031574.s")
 

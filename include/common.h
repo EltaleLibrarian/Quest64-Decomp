@@ -9,6 +9,7 @@ typedef unsigned short uint16_t;
 typedef uint16_t  qu102_t;
 #define qu102(n)                      ((qu102_t)((n)*0x0004))
 float _nsqrtf(float);
+extern Gfx* gMasterGfxPos;
 
 #include "common_structs.h"
 

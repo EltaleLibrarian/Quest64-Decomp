@@ -1,4 +1,8 @@
 #include "common.h"
+#include "el_math.h"
+#include "monsters.h"
+#include "1D160.h"
+#include "bgm.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008BB0.s")
 

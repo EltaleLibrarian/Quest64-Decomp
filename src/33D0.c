@@ -1,6 +1,7 @@
 #include "common.h"
 #include "1850.h"
 #include "33D0.h"
+#include "24E60.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800027D0.s")
 

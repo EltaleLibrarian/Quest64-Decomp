@@ -1,4 +1,5 @@
 #include "common.h"
+#include "191F0.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800185F0.s")
 
@@ -26,7 +27,38 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DB4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DF4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018DF4.s")
+void func_80018DF4(Vec3f* arg0, s32 arg1, s32 arg2) {
+    s32 pad[2];
+    DamageDigs* var_t0;
+    s32 var_v1;
+    s32 i;
+
+    i = 9;
+    var_t0 = D_800873D0;
+        while ((i != 0) && (var_t0->damageDisplayTimer != 0)){
+            i--;
+            var_t0++;
+        }
+    var_t0->damageDisplayTimer = 0x2D;
+    var_t0->targetPos = arg0;
+    var_t0->unk10 = arg1;
+    
+    if (arg2 < 0) {
+        arg2 = -arg2;
+    }
+
+    var_t0->numDigits = count_digits(arg2, var_t0->damageDigits, 1U);
+    var_v1 = 0;
+    
+    for(i = 0; i < 10; i++) {
+        if((D_800873D0[i].damageDisplayTimer != 0) && (arg0 == D_800873D0[i].targetPos)){
+            var_v1++;
+        } 
+    }
+    var_t0->unk18 = var_v1 - 1;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018F60.s")
 
