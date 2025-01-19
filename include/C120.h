@@ -34,6 +34,7 @@ extern u8 D_8004D740[];
 
 void func_8000B7DC(s32, f32, f32, f32, void*);
 u32 func_8000B9D8(u32 arg0);
+void func_8000B618(Mtx* arg0);
 
 
 #endif

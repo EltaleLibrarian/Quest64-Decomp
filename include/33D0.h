@@ -101,5 +101,5 @@ extern fileBounds D_80053F58[];
 
 //functions
 void func_80002EA0(void);
-
+void func_80003870(Mtx* arg0);
 #endif

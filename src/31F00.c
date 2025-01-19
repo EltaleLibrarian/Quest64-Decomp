@@ -4,22 +4,22 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800314C0.s")
-void func_800314C0(s32 arg0) {
-    OSContPad* temp_v0;
-    u16 temp_v1;
+void func_800314C0(s32 cont) {
+    OSContPad* pad;
+    u16 button;
 
     osContSetCh(4U);
     osContStartReadData(&gSIMessageQ);
     if (osRecvMesg(&gSIMessageQ, NULL, 1) != -1) {
-        osContGetReadData(&D_80092AA8);
+        osContGetReadData(&gPad);
     }
-    temp_v0 = &(&D_80092AA8)[arg0];
-    temp_v1 = temp_v0->button;
-    D_80092874 = temp_v1;
-    D_80092871 = temp_v0->stick_x;
-    D_80092872 = temp_v0->stick_y;
-    D_80092876 = temp_v1 & D_80092878;
-    D_80092878 = ~temp_v1;
+    pad = &(&gPad)[cont];
+    button = pad->button;
+    gPadButtonPressed = button;
+    gPadStickX = pad->stick_x;
+    gPadStickY = pad->stick_y;
+    D_80092876 = button & D_80092878;
+    D_80092878 = ~button;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031574.s")
@@ -39,18 +39,18 @@ void func_800314C0(s32 arg0) {
 s32 initPFSPaks(s32 arg0, s32 arg1)
 {
     s32 con_error;
-    u32 con_num;
+    u32 cont;
   
   
-  con_num = gCurrControllerNum;
+  cont = gCurrControllerNum;
   if (arg1 == 0xA)
   {
-    if (osMotorInit(&gSIMessageQ, &gPFS[con_num], con_num) != 0)
+    if (osMotorInit(&gSIMessageQ, &gPFS[cont], cont) != 0)
     {
-      con_error = osPfsInitPak(&gSIMessageQ, &gPFS[con_num], con_num);
+      con_error = osPfsInitPak(&gSIMessageQ, &gPFS[cont], cont);
       if (((con_error != PFS_ERR_DEVICE) && (con_error != PFS_ERR_NOPACK)) && (con_error != PFS_ERR_NEW_PACK))
       {
-        con_error = __osGetID(&gPFS[con_num]);
+        con_error = __osGetID(&gPFS[cont]);
       }
     }
     else
@@ -60,7 +60,7 @@ s32 initPFSPaks(s32 arg0, s32 arg1)
   }
   else
   {
-    con_error = osPfsInitPak(&gSIMessageQ, &gPFS[con_num], con_num);
+    con_error = osPfsInitPak(&gSIMessageQ, &gPFS[cont], cont);
   }
   return con_error;
 }

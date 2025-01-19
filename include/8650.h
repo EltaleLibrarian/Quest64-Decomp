@@ -49,4 +49,6 @@ typedef struct {
 extern u8 gMessageBuffer[0x400];
 extern u8 gNPCName[0x20];
 extern NPCData gNPCData[0x10];
+
+void func_80007F18(Mtx* arg0);
 #endif

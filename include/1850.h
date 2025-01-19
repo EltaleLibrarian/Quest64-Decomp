@@ -32,7 +32,7 @@ extern s16 D_8007BA60;
 extern u16 D_8007BA62;
 extern u16 D_8007B2E8;
 extern s16 D_8007B2F0;
-extern s8 D_8007B344;
+extern u8 D_8007B344;
 extern s8 D_8007B345;
 extern s32 D_8007B348;
 extern f32 D_8007BA40;

@@ -14,5 +14,7 @@ typedef struct {
 extern DamageDigs D_800873D0[10];
 
 void func_80018DF4(Vec3f* arg0, s32 arg1, s32 arg2); 
+void func_80019CCC(Mtx*);
+void func_8001A398(Mtx*);
 
 #endif

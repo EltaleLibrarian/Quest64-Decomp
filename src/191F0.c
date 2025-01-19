@@ -3,7 +3,15 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800185F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018638.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018638.s")
+void func_80018638(Mtx* arg0) {
+    func_800186F8();
+    func_80018B14();
+    func_800193B4();
+    func_80019CCC(arg0);
+    func_8001A398(arg0);
+    func_80018F60();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80018684.s")
 
