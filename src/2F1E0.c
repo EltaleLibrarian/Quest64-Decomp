@@ -29,3 +29,4 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030D70.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030D80.s")
+//https://decomp.me/scratch/m1BIT

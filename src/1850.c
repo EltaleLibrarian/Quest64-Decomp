@@ -130,6 +130,7 @@ void func_80000EEC(void) {
 }*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_800011DC.s")
+//https://decomp.me/scratch/8sgMl
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80001800.s")
 

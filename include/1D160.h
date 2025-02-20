@@ -55,5 +55,25 @@ typedef struct {
     s32 num_submaps;
 }MapData;
 
+typedef struct {
+    void* unk0;
+    s32 unk4;
+}MAP_BATTLE_1;
 
+typedef struct {
+    void* unk0;
+    void* unk4;
+    void* unk8;
+    s32 unk10;
+}MAP_BATTLE_2;
+
+typedef struct {
+    char unk0[0x30];
+    MAP_BATTLE_1* unk30; //battle related 1
+    MAP_BATTLE_2* unk34; //battle related 2
+}MAP_DATA_1;
+
+extern s32 D_8008C560;
+extern s32 D_8008C564;
+extern MAP_DATA_1* gMapDataPtr;
 #endif

@@ -24,6 +24,7 @@ MAP_PATH = f"build/{BASENAME}.map"
 PRE_ELF_PATH = f"build/{BASENAME}.elf"
 OVERLAY_INTRO_PATH = "src/overlays/intro"
 OVERLAY_ENDING_PATH = "src/overlays/ending"
+OVERLAY_TITLE_PATH = "src/overlays/title"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0I/ -Iinclude/2.0I/PR -Isrc"
 
@@ -183,6 +184,8 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_ENDING_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "overlaycc")
+            elif any(str(src_path).startswith(OVERLAY_TITLE_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith("os/O1/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "cc_o1")
