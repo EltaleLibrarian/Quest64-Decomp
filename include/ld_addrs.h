@@ -3,6 +3,20 @@
 
 #include "common.h"
 
+extern Addr SE_ctl_DATA_END;
+extern Addr SE_ctl_DATA_SIZE;
+extern Addr SE_ctl_DATA_START;
+extern Addr SE_ctl_ROM_END;
+extern Addr SE_ctl_ROM_START;
+extern Addr SE_ctl_VRAM;
+extern Addr SE_ctl_VRAM_END;
+extern Addr SE_tbl_DATA_END;
+extern Addr SE_tbl_DATA_SIZE;
+extern Addr SE_tbl_DATA_START;
+extern Addr SE_tbl_ROM_END;
+extern Addr SE_tbl_ROM_START;
+extern Addr SE_tbl_VRAM;
+extern Addr SE_tbl_VRAM_END;
 extern Addr boot_DATA_END;
 extern Addr boot_DATA_SIZE;
 extern Addr boot_DATA_START;
@@ -34,6 +48,20 @@ extern Addr header_ROM_END;
 extern Addr header_ROM_START;
 extern Addr header_VRAM;
 extern Addr header_VRAM_END;
+extern Addr instrument_ctl_DATA_END;
+extern Addr instrument_ctl_DATA_SIZE;
+extern Addr instrument_ctl_DATA_START;
+extern Addr instrument_ctl_ROM_END;
+extern Addr instrument_ctl_ROM_START;
+extern Addr instrument_ctl_VRAM;
+extern Addr instrument_ctl_VRAM_END;
+extern Addr instrument_tbl_DATA_END;
+extern Addr instrument_tbl_DATA_SIZE;
+extern Addr instrument_tbl_DATA_START;
+extern Addr instrument_tbl_ROM_END;
+extern Addr instrument_tbl_ROM_START;
+extern Addr instrument_tbl_VRAM;
+extern Addr instrument_tbl_VRAM_END;
 extern Addr main_BSS_END;
 extern Addr main_BSS_SIZE;
 extern Addr main_BSS_START;
@@ -109,13 +137,6 @@ extern Addr rompad_ROM_END;
 extern Addr rompad_ROM_START;
 extern Addr rompad_VRAM;
 extern Addr rompad_VRAM_END;
-extern Addr sound_data_DATA_END;
-extern Addr sound_data_DATA_SIZE;
-extern Addr sound_data_DATA_START;
-extern Addr sound_data_ROM_END;
-extern Addr sound_data_ROM_START;
-extern Addr sound_data_VRAM;
-extern Addr sound_data_VRAM_END;
 extern Addr unkData_DATA_END;
 extern Addr unkData_DATA_SIZE;
 extern Addr unkData_DATA_START;
@@ -123,5 +144,12 @@ extern Addr unkData_ROM_END;
 extern Addr unkData_ROM_START;
 extern Addr unkData_VRAM;
 extern Addr unkData_VRAM_END;
+extern Addr unk_tbl_DATA_END;
+extern Addr unk_tbl_DATA_SIZE;
+extern Addr unk_tbl_DATA_START;
+extern Addr unk_tbl_ROM_END;
+extern Addr unk_tbl_ROM_START;
+extern Addr unk_tbl_VRAM;
+extern Addr unk_tbl_VRAM_END;
 
 #endif

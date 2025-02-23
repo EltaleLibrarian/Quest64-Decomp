@@ -13,6 +13,7 @@ extern Gfx* gMasterGfxPos;
 extern u8 gInventory[150];
 
 #include "common_structs.h"
+#include "ld_addrs.h"
 
 #endif
 

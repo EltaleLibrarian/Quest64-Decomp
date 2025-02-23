@@ -30,11 +30,16 @@ LIBC_TITLE_PATH = "src/libc"
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0I/ -Iinclude/2.0I/PR -Isrc"
 IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
 GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_DIR} --$AS $ASFLAGS"
+TEST_TEMP = f"python3 tools/asm-processor/build.py --input-enc=utf-8 --output-enc=euc-jp {IDO_DIR} -- mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32"
 LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_DIR} --$AS $ASFLAGS"
 DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG"
 WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
 CFLAGS = f"-G 0 {WARNINGS} {COMMON_INCLUDES} {DEFINES}" 
 DEPENDENCY_GEN = f"cpp -w {COMMON_INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
+
+PERMUTER_COMPILE_COMMAND = (
+    f"{TEST_TEMP} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
+)
 
 GAME_OVERLAY_COMPILE_CMD = (
     f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
@@ -70,14 +75,14 @@ def clean():
 def write_permuter_settings():
     with open("permuter_settings.toml", "w") as f:
         f.write(
-            f"""compiler_command = "{GAME_OVERLAY_COMPILE_CMD}"
+            f"""compiler_command = "{IDO_DIR} -c -G 0 {CFLAGS} -mips2 -O2"
 assembler_command = "mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32"
 compiler_type = "ido"
 
 [preserve_macros]
 
 [decompme.compilers]
-"tools/ido_5.3/usr/lib/cc" = "ido_5.3"
+"{IDO_DIR}" = "ido_5.3"
 """
 )
 

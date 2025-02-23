@@ -269,9 +269,10 @@ segments:
       - [0x4A330, c, seq]
       - [0x4A950, c, synsetpriority]
       - [0x4A960, c, libc/ldiv]
-      - [0x4AAF0, data, rspBootText]
-      - [0x4ABC0, databin, gspF3DEX2kawase_fifo_text] #80049FC0
-      - [0x4AD20, data]
+      - [0x4AAF0, databin, rspBootText]
+      - [0x4ABC0, databin, gspFast3DText]
+      - [0x4BFF0, databin, aspMainText]
+      - [0x4CE10, data]
       - [0x716A0, .data, libc/xprintf]
       - [0x716F0, data]
       - [0x71AC0, .data, libc/xlitob]
@@ -367,15 +368,41 @@ segments:
     - [0xE27840, c]
     - [0xE2ADE0, data]
 
-  - name: sound_data
+
+  - name: instrument_ctl
     type: databin
     dir: sound/
     start: 0xE7E800
     vram: 0x8037A480
     subsegments:
     - [0xE7E800, databin, instrument_ctl]
+
+  - name: instrument_tbl
+    type: databin
+    dir: sound/
+    start: 0xE81610
+    subsegments:
     - [0xE81610, databin, instrument_tbl]
+
+  - name: unk_tbl
+    type: databin
+    dir: sound/
+    start: 0xEBABD0
+    subsegments:
+    - [0xEBABD0, databin, unk_tbl]
+
+  - name: SE_ctl
+    type: databin
+    dir: sound/
+    start: 0xEEE020
+    subsegments:    
     - [0xEEE020, databin, SE_ctl]
+
+  - name: SE_tbl
+    type: databin
+    dir: sound/
+    start: 0xEEFCE0
+    subsegments:      
     - [0xEEFCE0, databin, SE_tbl]
   
   - [0xF94380, databin, rompad] #0xFFs til the end

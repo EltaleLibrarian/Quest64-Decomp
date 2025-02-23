@@ -10,4 +10,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/os/csplayer/func_80037B7C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/os/csplayer/func_80038190.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/os/csplayer/alCSPNew.s")

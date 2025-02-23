@@ -1,6 +1,26 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/24E60/dma_write.s")
+extern OSMesgQueue D_8007B320;
+extern OSIoMesg D_8008D070;
+
+void dma_write(u32 devAddr, void* vAddr, s32 size) {
+    u32 mesgSize;
+
+    osInvalICache(vAddr, size);
+    osInvalDCache(vAddr, size);
+    while (size != 0) {
+        if (size > 0x4000) {
+            mesgSize = 0x4000;
+        } else {
+            mesgSize = size;
+        }
+        osPiStartDma(&D_8008D070, 0, 0, devAddr, vAddr, mesgSize, &D_8007B320);
+        osRecvMesg(&D_8007B320, NULL, 1);
+        size -= mesgSize;
+        devAddr = devAddr + mesgSize;
+        vAddr = (u8*)vAddr + mesgSize;
+    }
+}
 
 //#pragma GLOBAL_ASM("asm/nonmatchings/24E60/func_80024330.s")
 s32 count_digits(s32 value, u8 *str_ptr, u16 flags) //matched by a mysterious stranger. 

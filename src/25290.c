@@ -1,6 +1,15 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80024690.s")
+extern OSMesgQueue D_8008F288;
+
+//loads an overlay
+void func_80024690(s32 devAddr, void* vAddr, s32 nbytes) {
+    OSIoMesg sp28;
+
+    osInvalDCache(vAddr, nbytes);
+    osPiStartDma(&sp28, 0, 0, devAddr, vAddr, nbytes, &D_8008F288);
+    osRecvMesg(&D_8008F288, NULL, 1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80024704.s")
 

@@ -46,7 +46,7 @@ extern s32 D_8007B338;
 extern u8 D_E7E800[0x2E10];
 extern u8 D_EEE020[0x1CC0];
 extern u8 D_EBABD0;
-extern s32 Instrument_tbl_ROM_START[2];
+// extern s32 Instrument_tbl_ROM_START[2];
 extern u8 D_EEFCE0;
 extern NNSched D_8007B358;
 extern s32 D_80000300;
