@@ -14,13 +14,12 @@ src_dir = root_dir + "src/"
 CPP_FLAGS = [
     "-I.",
     "-Iinclude",
-    "-Iinclude/2.0I",
-    "-Iinclude/2.0I/PR",
+    "-Iinclude/2.0H",
+    "-Iinclude/2.0H/PR",
     "-D_LANGUAGE_C",
     "-D_FINALROM",
     "-DF3DEX_GBI",
     "-DWIN32",
-    
 ]
 
 def import_c_file(in_file) -> str:

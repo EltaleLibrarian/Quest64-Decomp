@@ -20,8 +20,22 @@ rotateCoordinatesByAngle  = 0x800232F4; //rom:0x23EF4 type:func
 dma_write                 = 0x80024260; //type:func
 count_digits              = 0x80024330; //type:func
 UpdateBGM                 = 0x800267B8; //rom:0x273B8
+DepthBuffer = 0x802DA800;
+__osMaxControllers = 0x80095491;
+__osPfsPifRam = 0x80095660;
+__osSiRawStartDma = 0x80046950;
+__osPiDevMgr = 0x8006F420; //size:0x1c
 
-
+piThread = 0x80092D50;
+piThreadStack = 0x80092F00;
+piEventQueue = 0x80093F00;
+piEventBuf = 0x80093F18;
+__osPiAccessQueueEnabled = 0x80070A10;
+piAccessBuf = 0x800955E0;
+__osPiAccessQueue = 0x800955E8;
+__osPiRawStartDma = 0x8003D910;
+__osEPiRawStartDma = 0x8003D9F0;
+__osPiTable = 0x8006F43C;
 
 //os functions
 initPFSPaks               = 0x80031ACC;
