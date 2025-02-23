@@ -183,6 +183,9 @@ extern u8 __osMaxControllers;
     if (ret != 0) \
         return ret;
 
+#define SELECT_BANK(pfs) \
+    __osPfsSelectBank((pfs))
+
 #define SET_ACTIVEBANK_TO_ZERO        \
     if (pfs->activebank != 0)         \
     {                                 \

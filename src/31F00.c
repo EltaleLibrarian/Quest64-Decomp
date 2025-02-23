@@ -1,9 +1,10 @@
 #include "common.h"
 #include "31F00.h"
 
+s32 osMotorInit(OSMesgQueue* mq, OSPfs* pfs, int channel);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031300.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_800314C0.s")
 void func_800314C0(s32 cont) {
     OSContPad* pad;
     u16 button;

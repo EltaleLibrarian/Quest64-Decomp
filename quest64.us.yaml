@@ -326,14 +326,36 @@ segments:
       - { start: 0x73A90, type: .bss, vram: 0x80092D40, name: os/initialize }
       - { start: 0x73A90, type: bss, vram: 0x80092D50, name: globalBSS1 }
       
-  - type: databin
+  - type: data
     start: 0x73A90
+    vram: 0x01000000
     name: unkData
-    follows_vram: main
     subsegments:
-      - [0x73A90, databin]
+      - [0x73A90, data]
 
+  - type: databin
+    start: 0x77560
+    name: unkData2
+    subsegments:
+      - [0x77560, databin]
 
+  - type: databin
+    start: 0xD4B3C0
+    name: unkData3
+    subsegments:
+      - [0xD4B3C0, databin]
+
+  - type: databin
+    start: 0xD77380
+    name: unkData4
+    subsegments:
+      - [0xD77380, databin]
+
+  - type: databin
+    start: 0xD884F0
+    name: unkData5
+    subsegments:
+      - [0xD884F0, databin]
 
   - name: ovl_title
     exclusive_ram_id: overlay

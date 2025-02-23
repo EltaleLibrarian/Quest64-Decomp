@@ -18,6 +18,11 @@ extern long long int	gspFast3DDataStart[], gspFast3DDataEnd[];
 #define MODE_SPLASH   4
 #define MODE_CREDITS  5
 
+void func_80021170(void);
+void func_80030E58(void);
+void func_800265F0(void);
+void func_800314C0(s32 cont);
+
 void func_80000C50(s32 arg0) {
     osCreateViManager(0xFE);
     osCreateMesgQueue(&D_8007B320, &D_8007B338, 1);
@@ -118,14 +123,14 @@ void func_8000111C(unk111Cs* arg0) {
     arg0->task.list.t.flags = 0;
     arg0->task.list.t.ucode_boot = (u64*)rspbootTextStart; // ucode boot at 0x80049EF0
     arg0->task.list.t.ucode_boot_size = (uintptr_t)rspbootTextEnd - (uintptr_t)rspbootTextStart;
-    arg0->task.list.t.ucode = gspFast3DTextStart; // ucode .text section at 0x80049FC0
-    arg0->task.list.t.ucode_data = gspFast3DDataStart; // ucode .data section at 0x800723D0
+    arg0->task.list.t.ucode = (u64*)gspFast3DTextStart; // ucode .text section at 0x80049FC0
+    arg0->task.list.t.ucode_data = (u64*)gspFast3DDataStart; // ucode .data section at 0x800723D0
     arg0->task.list.t.ucode_data_size = SP_UCODE_DATA_SIZE;
-    arg0->task.list.t.dram_stack = D_80300000; // Stack at 0x80300000
+    arg0->task.list.t.dram_stack = (u64*)D_80300000; // Stack at 0x80300000
     arg0->task.list.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
-    arg0->task.list.t.output_buff = gThreadOutStack;      // Output FIFO buffer starts at 0x8031B2A0
-    arg0->task.list.t.output_buff_size = gThreadOutStack + sizeof(gThreadOutStack); //gThreadOutStackEnd; // Output FIFO buffer ends   at 0x803232A0
-    arg0->task.list.t.yield_data_ptr = D_80300400;
+    arg0->task.list.t.output_buff = (u64*)gThreadOutStack;      // Output FIFO buffer starts at 0x8031B2A0
+    arg0->task.list.t.output_buff_size = (u64*)(gThreadOutStack + sizeof(gThreadOutStack)); //gThreadOutStackEnd; // Output FIFO buffer ends   at 0x803232A0
+    arg0->task.list.t.yield_data_ptr = (u64*)D_80300400;
     arg0->task.list.t.yield_data_size = OS_YIELD_DATA_SIZE;
     arg0->task.next = NULL;
     arg0->task.flags = OS_SC_SWAPBUFFER;

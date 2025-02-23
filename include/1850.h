@@ -42,7 +42,7 @@ extern s32 D_8007BA4C;
 extern s16 D_8007BA64;
 
 extern OSMesgQueue D_8007B320;
-extern s32 D_8007B338;
+extern OSMesg D_8007B338;
 extern u8 D_E7E800[0x2E10];
 extern u8 D_EEE020[0x1CC0];
 extern u8 D_EBABD0;
@@ -84,8 +84,8 @@ void func_80011B40(void);
 void func_800121F0(void);
 void func_80024704(void);
 void func_800250E8(NNSched*);
-void func_8002513C(s32 arg0, s32 arg1, u8* arg2, s32 arg3, u8* arg4);
-void func_80025488(u32 arg0, s32 arg1, u8* arg2);
+void func_8002513C(u8* arg0, u8* arg1, u8* arg2, u8* arg3, u8* arg4);
+void func_80025488(u8* arg0, u8* arg1, u8* arg2);
 void func_80026A40(void);
 s32 func_80031300(void);
 u8 func_80032704(OSMesgQueue* arg0, OSMesgQueue* arg1); //return type may be wrong. 
