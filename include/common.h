@@ -10,6 +10,7 @@ typedef uint16_t  qu102_t;
 #define qu102(n)                      ((qu102_t)((n)*0x0004))
 float _nsqrtf(float);
 extern Gfx* gMasterGfxPos;
+extern u8 gInventory[150];
 
 #include "common_structs.h"
 

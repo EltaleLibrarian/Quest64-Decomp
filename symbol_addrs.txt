@@ -259,7 +259,7 @@ D_8008C574                = 0x8008C574; //type:f32 size:0x4
 D_8008C578                = 0x8008C578; //type:s16 size:0x2
 gBattleState              = 0x8008C592; //type:u16 size:0x2
 D_8008C634                = 0x8008C634; //type:s32 size:0x4
-
+gInventory                = 0x8008CF78; //type:u8 size:0x96
 D_8008FD00                = 0x8008FD00; //type:s8 size:0x4
 
 gCurrControllerNum        = 0x80092870; //type:s8 size:0x1
