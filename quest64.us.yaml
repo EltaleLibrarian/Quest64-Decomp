@@ -273,6 +273,8 @@ segments:
       - [0x4ABC0, databin, gspFast3DText]
       - [0x4BFF0, databin, aspMainText]
       - [0x4CE10, data]
+      - [0x70000, .data, os/initialize] #8006F400
+      - [0x70020, data] #8006F410
       - [0x716A0, .data, libc/xprintf]
       - [0x716F0, data]
       - [0x71AC0, .data, libc/xlitob]
@@ -320,8 +322,10 @@ segments:
       - [0x72FC0, .rodata, seq]
       - [0x72FD0, rodata, ucode_data]
       - [0x737D0, rodata]
-      - { start: 0x73A90, type: bss, vram: 0x80072E90 }
-
+      - { start: 0x73A90, type: bss, vram: 0x80072E90, name: globalBSS }
+      - { start: 0x73A90, type: .bss, vram: 0x80092D40, name: os/initialize }
+      - { start: 0x73A90, type: bss, vram: 0x80092D50, name: globalBSS1 }
+      
   - type: databin
     start: 0x73A90
     name: unkData

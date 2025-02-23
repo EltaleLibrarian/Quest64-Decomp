@@ -26,7 +26,7 @@ void func_80000C50(s32 arg0) {
     func_80025488(SE_ctl_ROM_START, SE_ctl_ROM_END, SE_tbl_ROM_START);
     nnScCreateScheduler(&D_8007B358, 1);
     func_80031300();
-    if (D_80000300 == 1) {
+    if (osTvType == OS_TV_NTSC) {
         osViSetMode(&D_8006F4F0);
     } else {
         osViSetMode(&D_8006FDB0);

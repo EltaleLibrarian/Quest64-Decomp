@@ -25,7 +25,8 @@ PRE_ELF_PATH = f"build/{BASENAME}.elf"
 OVERLAY_INTRO_PATH = "src/overlays/intro"
 OVERLAY_ENDING_PATH = "src/overlays/ending"
 OVERLAY_TITLE_PATH = "src/overlays/title"
-LIBC_TITLE_PATH = "src/libc"
+LIBC_PATH = "src/libc"
+OS_PATH = "src/os"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0I/ -Iinclude/2.0I/PR -Isrc"
 IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
@@ -220,8 +221,10 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
             elif any(str(src_path).startswith("src/libc/xprintf.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(str(src_path).startswith(LIBC_TITLE_PATH) for src_path in entry.src_paths):
+            elif any(str(src_path).startswith(LIBC_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O2_cc")
+            elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "cc_o1")
             elif any(str(src_path).startswith("os/O1/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "cc_o1")
             else:

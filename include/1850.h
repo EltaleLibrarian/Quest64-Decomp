@@ -49,7 +49,7 @@ extern u8 D_EBABD0;
 // extern s32 Instrument_tbl_ROM_START[2];
 extern u8 D_EEFCE0;
 extern NNSched D_8007B358;
-extern s32 D_80000300;
+extern s32 osTvType;
 extern OSViMode D_8006F4F0;
 extern OSViMode D_8006FDB0;
 extern OSMesgQueue gSIMessageQ;

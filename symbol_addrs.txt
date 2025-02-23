@@ -316,7 +316,18 @@ gUnk_title_Zs   = 0x8011ACB8; //rom:0xDC15A8
 gTitleTimeoutTimer       = 0x8011AD44;
 gTitlePakMessagePtr      = 0x8011AD5C;
 gIntroBGTextureXPosition = 0x80166220;
+osViClock = 0x8006F408;
+osTvType = 0x80000300;
+osAppNMIBuffer = 0x8000031C;
+osClockRate = 0x8006F400; //type:u64
+osResetType = 0x8000030C;
+osPiRawReadIo = 0x8003D3D0;
+__osSpRawWriteIo = 0x8003CA10;
+__osSpRawReadIo = 0x8003C9C0;
+__osSetFpcCsr = 0x8003C9B0;
+__osFinalrom = 0x80092D40;
 
+_bzero = 0x8003D430;
 _Ldtob = 0x800484F0; //rom:0x488E0
 _Genld = 0x80047F80; //rom:0x48B80
 _Litob = 0x80047CE0;
@@ -387,7 +398,8 @@ alCSPNew = 0x80038190;
 alSeqFileNew = 0x80038508;
 alBnkfNew = 0x80038404;
 alSeqpSetBank = 0x80038550;
-
+__OSGlobalIntMask = 0x8006F410; //type:s32
+__osException = 0x8003CA70;
 
 __ull_rshift = 0x80039AD0;
 __ull_rem = 0x80039AFC;
