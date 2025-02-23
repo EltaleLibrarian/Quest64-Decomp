@@ -25,12 +25,16 @@ PRE_ELF_PATH = f"build/{BASENAME}.elf"
 OVERLAY_INTRO_PATH = "src/overlays/intro"
 OVERLAY_ENDING_PATH = "src/overlays/ending"
 OVERLAY_TITLE_PATH = "src/overlays/title"
+LIBC_TITLE_PATH = "src/libc"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0I/ -Iinclude/2.0I/PR -Isrc"
-
-GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {TOOLS_DIR}/ido_5.3/usr/lib/cc --$AS $ASFLAGS"
-LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {TOOLS_DIR}/ido_5.3/usr/lib/cc --$AS $ASFLAGS"
-WARNINGS = "-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul -D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG -woff 649,838"
+IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
+GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_DIR} --$AS $ASFLAGS"
+LIB_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_DIR} --$AS $ASFLAGS"
+DEFINES = "-D_LANGUAGE_C -DF3DEX_GBI -DNDEBUG"
+WARNINGS = f"-fullwarn -verbose -Xcpluscomm -signed -nostdinc -non_shared -Wab,-r4300_mul {DEFINES} -woff 649,838"
+CFLAGS = f"-G 0 {WARNINGS} {COMMON_INCLUDES} {DEFINES}" 
+DEPENDENCY_GEN = f"cpp -w {COMMON_INCLUDES} -nostdinc -MD -MF $out.d $in -o /dev/null"
 
 GAME_OVERLAY_COMPILE_CMD = (
     f"{GAME_CC_DIR} {COMMON_INCLUDES} -- -c -G 0 {WARNINGS} {COMMON_INCLUDES} -mips2 -O2"
@@ -126,19 +130,39 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja.rule(
         "cc",
         description="cc $in",
-        command=f"{GAME_COMPILE_CMD} -o $out $in",
+        command=f"{GAME_COMPILE_CMD} -o $out $in && {DEPENDENCY_GEN}",
     )
 
     ninja.rule(
         "overlaycc",
         description="cc (overlay) $in",
-        command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in",
+        command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in && {DEPENDENCY_GEN}",
+    )
+
+    ninja.rule(
+        "O2_cc",
+        description="cc (overlay) $in",
+        command=f"{GAME_OVERLAY_COMPILE_CMD} -o $out $in && {DEPENDENCY_GEN}",
+    )
+
+    ninja.rule(
+        "libc_ll_cc",
+        command=f"({GAME_CC_DIR} -- -c {CFLAGS} -mips3 -32 -O1 -o $out $in) && (python3 {TOOLS_DIR}/set_o32abi_bit.py $out && {DEPENDENCY_GEN})",
+        description="Compiling libc_ll_cc .c file"
     )
 
     ninja.rule(
         "libcc",
         description="cc $in",
-        command=f"{LIB_COMPILE_CMD} $in -o $out",
+        command=f"{LIB_COMPILE_CMD} $in -o $out && {DEPENDENCY_GEN}",
+    )
+
+    ninja.rule(
+        "ido_O3_cc",
+        command=f"{IDO_DIR} -c -G 0 -Xcpluscomm -xansi {COMMON_INCLUDES} -non_shared -mips2 -woff 819,826,852 -Wab,-r4300_mul -nostdinc -O3 -o $out $in && {DEPENDENCY_GEN}",
+        description="Compiling -O3 ido .c file",
+        depfile="$out.d",
+        deps="gcc",
     )
 
     ninja.rule(
@@ -162,7 +186,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     ninja.rule(
         "cc_o1",
         description="cc (O1) $in",
-        command=f"{GAME_O1_COMPILE_CMD} -o $out $in",
+        command=f"{GAME_O1_COMPILE_CMD} -o $out $in && {DEPENDENCY_GEN}",
     )
 
     for entry in linker_entries:
@@ -179,14 +203,20 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         ):
             build(entry.object_path, entry.src_paths, "as")
         elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
-            if any(str(src_path).startswith("src/lib/") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "libcc")
-            elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
+            if any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_ENDING_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_TITLE_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
+            elif any(str(src_path).startswith("src/libc/ll.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "libc_ll_cc")
+            elif any(str(src_path).startswith("src/libc/xldtob.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(str(src_path).startswith("src/libc/xprintf.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(str(src_path).startswith(LIBC_TITLE_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith("os/O1/") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "cc_o1")
             else:

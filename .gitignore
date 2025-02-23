@@ -14,3 +14,5 @@ quest64.d
 quest64.ld
 permuter_settings.toml
 undefined_syms_auto.txt
+.ninja_deps
+__pycache__/

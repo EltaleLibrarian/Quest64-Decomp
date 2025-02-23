@@ -335,3 +335,27 @@ gTitlePakMessagePtr      = 0x8011AD5C;
 gIntroBGTextureXPosition = 0x80166220;
 
 Instrument_tbl_ROM_START = 0xE81610;
+
+_Ldtob = 0x800484F0; //rom:0x488E0
+_Genld = 0x80047F80; //rom:0x48B80
+_Litob = 0x80047CE0;
+memcpy = 0x8003FB20; //rom:0x40720
+lldiv = 0x80049D60; //rom:0x4A960
+ldiv = 0x80049E60; //rom:0x4AA60
+_Printf = 0x8003F4D0;
+_Putfld = 0x8003EE60;
+strchr = 0x8003FB74;
+strlen = 0x8003FB4C;
+spaces = 0x80070AA0;
+zeroes = 0x80070AC4;
+
+__ull_rshift = 0x80039AD0;
+__ull_rem = 0x80039AFC;
+__ull_div = 0x80039B38;
+__ll_lshift = 0x80039B74;
+__ll_rem = 0x80039BA0;
+__ll_div = 0x80039BDC;
+__ll_mul = 0x80039C38;
+__ull_divremi = 0x80039C68;
+__ll_mod = 0x80039CC8;
+__ll_rshift = 0x80039D64;
