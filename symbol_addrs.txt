@@ -431,6 +431,17 @@ __osContLastCmd = 0x80095490;
 __osMaxControllers = 0x80095491;
 __osContDataCrc = 0x80046AB0;
 __osContAddressCrc = 0x80046A00;
+__osThreadTail = 0x800709F0;
+vi = 0x80070A20;
+__osViCurr = 0x80070A80;
+__osViNext = 0x80070A84;
+__osTimerList = 0x80070A90;
+__osCurrentTime = 0x80095620;
+__osBaseCounter = 0x80095628;
+__osViIntrCount = 0x8009562C;
+__osTimerCounter = 0x80095630;
+__osBaseTimer = 0x80095634;
+osGetCount = 0x8003ED90;
 
 __ull_rshift = 0x80039AD0;
 __ull_rem = 0x80039AFC;

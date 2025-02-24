@@ -50,6 +50,7 @@ void __osInitialize_common(void) {
     while (__osSpRawWriteIo(PIF_RAM_END - 3, pifdata | 8)) {
         ; //todo: magic contant
     }
+    
     *(__osExceptionVector *)UT_VEC = __osExceptionPreamble;
     *(__osExceptionVector *)XUT_VEC = __osExceptionPreamble;
     *(__osExceptionVector *)ECC_VEC = __osExceptionPreamble;
@@ -63,6 +64,7 @@ void __osInitialize_common(void) {
     if (sp38) {
         osClockRate = sp38;
     }
+
     osClockRate = osClockRate * 3 / 4;
 
     if (osResetType == 0) { // cold reset

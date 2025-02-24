@@ -2,16 +2,14 @@
 #include "PR/ultraerror.h"
 #include "PR/sptask.h"
 #include "PR/rcp.h"
-#include "../os/osint.h"
+#include "os/osint.h"
 
 #define _osVirtualToPhysical(ptr)              \
     if (ptr != NULL) {                         \
         ptr = (void*)osVirtualToPhysical(ptr); \
     }
 
-// static OSTask tmp_task;
-
-extern OSTask tmp_task;
+static OSTask tmp_task;
 
 static OSTask* _VirtualToPhysicalTask(OSTask* intp) {
     OSTask* tp;

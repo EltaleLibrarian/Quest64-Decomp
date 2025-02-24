@@ -30,6 +30,16 @@ OS_PATH = "src/os"
 AUDIO_PATH = "src/libultra/audio"
 IO_PATH = "src/libultra/io"
 GU_PATH = "src/libultra/gu"
+OS_PATH_2 = "src/libultra/os"
+
+#Files that compile differently from the rest of the directory they are in
+SPECIAL_FILE_COMPILE_RULES = {
+    "src/libc/ll.c": "libc_ll_cc",
+    "src/libc/xldtob.c": "ido_O3_cc",
+    "src/libc/xprintf.c": "ido_O3_cc",
+    "src/libultra/io/sptask.c": "O2_cc",
+    "src/sndpstop": "O2_cc",
+}
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0H/ -Iinclude/2.0H/PR -Isrc -Isrc/libultra"
 IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
@@ -193,7 +203,7 @@ def build_stuff(linker_entries: List[LinkerEntry]):
     )
 
     ninja.rule(
-        "cc_o1",
+        "O1_cc",
         description="cc (O1) $in",
         command=f"{GAME_O1_COMPILE_CMD} -o $out $in && {DEPENDENCY_GEN}",
     )
@@ -212,7 +222,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
         ):
             build(entry.object_path, entry.src_paths, "as")
         elif isinstance(seg, splat.segtypes.common.c.CommonSegC):
-            if any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
+            # Check if any of the source file paths match a special compile rule.
+            special_command = None
+            for key, cmd in SPECIAL_FILE_COMPILE_RULES.items():
+                if any(str(src_path).startswith(key) for src_path in entry.src_paths):
+                    special_command = cmd
+                    break
+            if special_command:
+                build(entry.object_path, entry.src_paths, special_command)
+            elif any(str(src_path).startswith(OVERLAY_INTRO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_ENDING_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
@@ -221,25 +239,15 @@ def build_stuff(linker_entries: List[LinkerEntry]):
             elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
             elif any(str(src_path).startswith(IO_PATH) for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "cc_o1")
+                build(entry.object_path, entry.src_paths, "O1_cc")
             elif any(str(src_path).startswith(GU_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(str(src_path).startswith("src/libc/ll.c") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "libc_ll_cc")
-            elif any(str(src_path).startswith("src/libc/xldtob.c") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(str(src_path).startswith("src/libc/xprintf.c") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "ido_O3_cc")
-            elif any(str(src_path).startswith("src/os/sptask.c") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "O2_cc")
-            elif any(str(src_path).startswith("src/sndpstop") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith(LIBC_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "cc_o1")
-            elif any(str(src_path).startswith("os/O1/") for src_path in entry.src_paths):
-                build(entry.object_path, entry.src_paths, "cc_o1")
+                build(entry.object_path, entry.src_paths, "O1_cc")
+            elif any(str(src_path).startswith(OS_PATH_2) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O1_cc")
             else:
                 build(entry.object_path, entry.src_paths, "cc")
         elif isinstance(seg, splat.segtypes.common.databin.CommonSegDatabin):
