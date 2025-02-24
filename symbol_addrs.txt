@@ -36,6 +36,17 @@ __osPiAccessQueue = 0x800955E8;
 __osPiRawStartDma = 0x8003D910;
 __osEPiRawStartDma = 0x8003D9F0;
 __osPiTable = 0x8006F43C;
+bcopy = 0x8003E210;
+__osSpSetStatus = 0x8003E1F0;
+__osSpGetStatus = 0x8003E200;
+__osSpSetPc = 0x8003E520;
+__osSpRawStartDma = 0x8003E560;
+__osSpDeviceBusy = 0x8003E5F0;
+tmp_task = 0x80093FA0;
+__osEventStateTab = 0x80093F20;
+alSndpStop = 0x80039960;
+alEvtqPostEvent = 0x8003FE6C;
+alSndpSetVol = 0x80039A10;
 
 //os functions
 initPFSPaks               = 0x80031ACC;

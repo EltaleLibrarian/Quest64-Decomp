@@ -27,6 +27,9 @@ OVERLAY_ENDING_PATH = "src/overlays/ending"
 OVERLAY_TITLE_PATH = "src/overlays/title"
 LIBC_PATH = "src/libc"
 OS_PATH = "src/os"
+AUDIO_PATH = "src/libultra/audio"
+IO_PATH = "src/libultra/io"
+GU_PATH = "src/libultra/gu"
 
 COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0H/ -Iinclude/2.0H/PR -Isrc"
 IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
@@ -215,12 +218,22 @@ def build_stuff(linker_entries: List[LinkerEntry]):
                 build(entry.object_path, entry.src_paths, "overlaycc")
             elif any(str(src_path).startswith(OVERLAY_TITLE_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "overlaycc")
+            elif any(str(src_path).startswith(AUDIO_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(str(src_path).startswith(IO_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "cc_o1")
+            elif any(str(src_path).startswith(GU_PATH) for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "ido_O3_cc")
             elif any(str(src_path).startswith("src/libc/ll.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "libc_ll_cc")
             elif any(str(src_path).startswith("src/libc/xldtob.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
             elif any(str(src_path).startswith("src/libc/xprintf.c") for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "ido_O3_cc")
+            elif any(str(src_path).startswith("src/os/sptask.c") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O2_cc")
+            elif any(str(src_path).startswith("src/sndpstop") for src_path in entry.src_paths):
+                build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith(LIBC_PATH) for src_path in entry.src_paths):
                 build(entry.object_path, entry.src_paths, "O2_cc")
             elif any(str(src_path).startswith(OS_PATH) for src_path in entry.src_paths):

@@ -1,3 +1,3 @@
 #include "common.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sp/func_8003E5F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sp/__osSpDeviceBusy.s")

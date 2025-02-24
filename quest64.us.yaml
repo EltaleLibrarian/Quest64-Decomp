@@ -129,7 +129,7 @@ segments:
       - [0x35A50, hasm, os/writebackdcache]
       - [0x35AD0, c, os/gettime]
       - [0x35B60, hasm, gu/sqrtf]
-      - [0x35B70, c, gu/position]
+      - [0x35B70, c, libultra/gu/position]
       - [0x35D90, c, sins]
       - [0x35E00, c, mtxutil]
       - [0x36070, c, mtxcatf]
@@ -145,7 +145,7 @@ segments:
       - [0x37110, c, pidma]
       - [0x37220, c, heapinit]
       - [0x37260, c, heapalloc]
-      - [0x372C0, c, aisetfreq]
+      - [0x372C0, c, libultra/io/aisetfreq]
       - [0x37420, c, sl]
       - [0x374E0, c, seqpsetvol]
       - [0x37520, c, synthesizer]
@@ -165,9 +165,9 @@ segments:
       - [0x3A4B0, c, sndpsetsound]
       - [0x3A4D0, c, sndpgetstate]
       - [0x3A4F0, c, sndplay]
-      - [0x3A560, c, sndpstop]
+      - [0x3A560, c, libultra/audio/sndpstop]
       - [0x3A5B0, c, sndpsetpitch]
-      - [0x3A610, c, sndpsetvol]
+      - [0x3A610, c, libultra/audio/sndpsetvol]
       - [0x3A670, c, sndpsetpan]
       - [0x3A6D0, c, libc/ll]
       - [0x3A990, c, os/O1/pfsinitPFSPaks]
@@ -207,7 +207,7 @@ segments:
       - [0x3EDF0, c, spsetstat]
       - [0x3EE00, c, spgetstat]
       - [0x3EE10, c, bcopy]
-      - [0x3F120, c, spsetpc]
+      - [0x3F120, c, libultra/io/spsetpc]
       - [0x3F160, c, sprawdma]
       - [0x3F1F0, c, sp]
       - [0x3F220, c, timerintr]
@@ -300,7 +300,8 @@ segments:
       - [0x725D0, .rodata, 2F1E0]
       - [0x72650, .rodata, 31F00]
       - [0x72680, .rodata, 328F0]
-      - [0x726B0, .rodata, gu/position]
+      - [0x726B0, rodata]
+      - [0x72730, .rodata, libultra/gu/position]
       - [0x72740, .rodata, sinf]
       - [0x72790, .rodata, perspective]
       - [0x727A0, .rodata, lookatref]
@@ -326,7 +327,11 @@ segments:
       - { start: 0x73A90, type: bss, vram: 0x80072E90, name: globalBSS }
       - { start: 0x73A90, type: .bss, vram: 0x80092D40, name: os/initialize }
       - { start: 0x73A90, type: .bss, vram: 0x80092D50, name: os/pimgr }
-      - { start: 0x73A90, type: bss, vram: 0x80093F20, name: globalBSS1 }
+      - { start: 0x73A90, type: .bss, vram: 0x80093F20, name: os/seteventmesg }
+      - { start: 0x73A90, type: bss, vram: 0x80093FA0, name: os/sptask }
+      - { start: 0x73A90, type: bss, vram: 0x80093FC0, name: globalBSS2 }
+      - { start: 0x73A90, type: .bss, vram: 0x80095200, name: libultra/gu/position }
+      - { start: 0x73A90, type: bss, vram: 0x80095210, name: globalBSS3 }
       
   - type: data
     start: 0x73A90

@@ -4,7 +4,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/event/func_8003FDFC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/event/func_8003FE6C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/event/alEvtqPostEvent.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/event/func_8003FF90.s")
 
