@@ -121,11 +121,12 @@ segments:
       - [0x35020, c, libultra/io/sptask]
       - [0x352E0, c, libultra/io/viblack]
       - [0x35350, c, libultra/io/viswapbuf]
-      - [0x353A0, c, os/vigetcurrframebuf]
-      - [0x35440, c, os/vimgr]
+      - [0x353A0, c, libultra/io/vigetcurrframebuf]
+      - [0x353E0, hasm] #just a bunch of NOPs??
+      - [0x35440, c, libultra/io/vimgr]
       - [0x357A0, c, os/visetmode]
       - [0x35810, c, os/visetspecial]
-      - [0x359D0, c, os/virtualtophysical]
+      - [0x359D0, c, libultra/os/virtualtophysical]
       - [0x35A50, hasm, os/writebackdcache]
       - [0x35AD0, c, libultra/os/gettime]
       - [0x35B60, hasm, gu/sqrtf]
@@ -196,7 +197,7 @@ segments:
       - [0x3E0D0, c, interrupt]
       - [0x3E110, c, thread]
       - [0x3E150, c, libultra/io/cartrominit]
-      - [0x3E250, c, os/leodiskinit]
+      - [0x3E250, c, libultra/io/leodiskinit]
       - [0x3E350, c, siacsDuplicate]
       - [0x3E410, c, getthreadpri]
       - [0x3E430, c, setthreadpri]
@@ -212,7 +213,7 @@ segments:
       - [0x3F1F0, c, sp]
       - [0x3F220, c, timerintr]
       - [0x3F620, c, vigetcurrcontext]
-      - [0x3F630, c, viswapcontext]
+      - [0x3F630, c, libultra/io/viswapcontext]
       - [0x3F990, hasm, getcount]
       - [0x3F9A0, c, probetlb]
       - [0x3FA60, c, libc/xprintf]
@@ -276,6 +277,8 @@ segments:
       - [0x70000, .data, libultra/os/initialize] #8006F400
       - [0x70020, .data, libultra/io/pimgr] #8006F410
       - [0x70040, data]
+      - [0x70D70, .data, libultra/io/vimgr]
+      - [0x70D90, data]
       - [0x715A0, .data, libultra/io/aisetnextbuf]
       - [0x715B0, data]
       - [0x71620, data, vi]
@@ -335,11 +338,12 @@ segments:
       - { start: 0x73A90, type: .bss, vram: 0x80092D50, name: libultra/io/pimgr }
       - { start: 0x73A90, type: .bss, vram: 0x80093F20, name: libultra/os/seteventmesg }
       - { start: 0x73A90, type: .bss, vram: 0x80093FA0, name: libultra/io/sptask }
-      - { start: 0x73A90, type: bss, vram: 0x80093FE0, name: globalBSS2 }
+      - { start: 0x73A90, type: .bss, vram: 0x80093FE0, name: libultra/io/vimgr }
       - { start: 0x73A90, type: .bss, vram: 0x80095200, name: libultra/gu/position }
       - { start: 0x73A90, type: bss, vram: 0x80095210, name: globalBSS3 }
       - {start: 0x73A90, type: .bss, vram: 0x800954E0, name: libultra/io/cartrominit}
-      - {start: 0x73A90, type: bss, vram: 0x80095560, name: globalBSS4 }
+      - {start: 0x73A90, type: .bss, vram: 0x80095560, name: libultra/io/leodiskinit }
+      - {start: 0x73A90, type: bss, vram: 0x800955E0, name: globalBSS4 }
       - {start: 0x73A90, type: bss, vram: 0x80095620, name: timerintr }
       - {start: 0x73A90, type: bss, vram: 0x80095640, name: globalBSS5 }
       
