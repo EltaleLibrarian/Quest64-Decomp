@@ -122,9 +122,9 @@ segments:
       - [0x352E0, c, libultra/io/viblack]
       - [0x35350, c, libultra/io/viswapbuf]
       - [0x353A0, c, libultra/io/vigetcurrframebuf]
-      - [0x353E0, hasm] #just a bunch of NOPs??
+      - [0x353E0, hasm, parameters]
       - [0x35440, c, libultra/io/vimgr]
-      - [0x357A0, c, os/visetmode]
+      - [0x357A0, c, libultra/io/visetmode]
       - [0x35810, c, os/visetspecial]
       - [0x359D0, c, libultra/os/virtualtophysical]
       - [0x35A50, hasm, os/writebackdcache]
@@ -174,9 +174,9 @@ segments:
       - [0x3A990, c, libultra/io/pfsinitPFSPaks]
       - [0x3AC00, c, motor]
       - [0x3B3A0, c, libc/syncprintf]
-      - [0x3B3E0, c, os/controller]
+      - [0x3B3E0, c, libultra/os/controller]
       - [0x3B7A0, c, contsetch]
-      - [0x3B810, c, contreaddata]
+      - [0x3B810, c, libultra/io/contreaddata]
       - [0x3BA30, c, libultra/io/pfsfilestate]
       - [0x3BD20, c, libultra/io/pfsfreeblocks]
       - [0x3BE70, c, libultra/io/pfsallocatefile]
@@ -184,7 +184,7 @@ segments:
       - [0x3CC30, c, libultra/io/pfsreadwritefile]
       - [0x3D130, c, __osGetId]
       - [0x3D390, c, libultra/io/pfsnumfiles]
-      - [0x3D4E0, c, contquery]
+      - [0x3D4E0, c, libultra/io/contquery]
       - [0x3D590, c, setsr]
       - [0x3D5A0, c, getsr]
       - [0x3D5B0, c, setfpccsr]
@@ -212,7 +212,7 @@ segments:
       - [0x3F160, c, sprawdma]
       - [0x3F1F0, c, sp]
       - [0x3F220, c, timerintr]
-      - [0x3F620, c, vigetcurrcontext]
+      - [0x3F620, c, libultra/io/vigetcurrcontext]
       - [0x3F630, c, libultra/io/viswapcontext]
       - [0x3F990, hasm, getcount]
       - [0x3F9A0, c, probetlb]
@@ -237,7 +237,7 @@ segments:
       - [0x44D90, c, synsetvol]
       - [0x44E30, c, synsetpitch]
       - [0x44EC0, c, synallocvoice]
-      - [0x450F0, c, cents2ratio]
+      - [0x450F0, c, libultra/audio/cents2ratio]
       - [0x45140, c, synstartvoiceparam]
       - [0x45230, c, synsetpan]
       - [0x452C0, c, synsetfxmix]
@@ -264,8 +264,8 @@ segments:
       - [0x488D0, hasm, setcompare]
       - [0x488E0, c, libc/xlitob]
       - [0x48B80, c, libc/xldtob]
-      - [0x49640, c, copy]
-      - [0x496C0, c, filter]
+      - [0x49640, c, libultra/audio/copy]
+      - [0x496C0, c, libultra/audio/filter]
       - [0x496E0, c, reverb]
       - [0x4A330, c, seq]
       - [0x4A950, c, synsetpriority]
@@ -281,6 +281,8 @@ segments:
       - [0x70D90, data]
       - [0x715A0, .data, libultra/io/aisetnextbuf]
       - [0x715B0, data]
+      - [0x715C0, .data, libultra/os/controller]
+      - [0x715D0, data]
       - [0x71620, data, vi]
       - [0x71690, data, timerintr]
       - [0x716A0, .data, libc/xprintf]
@@ -325,7 +327,7 @@ segments:
       - [0x72C40, .rodata, resample]
       - [0x72C80, .rodata, env]
       - [0x72CE0, .rodata, seqplayer]
-      - [0x72F20, .rodata, cents2ratio]
+      - [0x72F20, .rodata, libultra/audio/cents2ratio]
       - [0x72F30, .rodata, libc/xldtob]
       - [0x72F90, .rodata, reverb]
       - [0x72FC0, .rodata, seq]
@@ -341,11 +343,12 @@ segments:
       - { start: 0x73A90, type: .bss, vram: 0x80093FE0, name: libultra/io/vimgr }
       - { start: 0x73A90, type: .bss, vram: 0x80095200, name: libultra/gu/position }
       - { start: 0x73A90, type: bss, vram: 0x80095210, name: globalBSS3 }
-      - {start: 0x73A90, type: .bss, vram: 0x800954E0, name: libultra/io/cartrominit}
-      - {start: 0x73A90, type: .bss, vram: 0x80095560, name: libultra/io/leodiskinit }
-      - {start: 0x73A90, type: bss, vram: 0x800955E0, name: globalBSS4 }
-      - {start: 0x73A90, type: bss, vram: 0x80095620, name: timerintr }
-      - {start: 0x73A90, type: bss, vram: 0x80095640, name: globalBSS5 }
+      - { start: 0x73A90, type: .bss, vram: 0x80095450, name: libultra/os/controller }
+      - { start: 0x73A90, type: .bss, vram: 0x800954E0, name: libultra/io/cartrominit}
+      - { start: 0x73A90, type: .bss, vram: 0x80095560, name: libultra/io/leodiskinit }
+      - { start: 0x73A90, type: bss, vram: 0x800955E0, name: globalBSS4 }
+      - { start: 0x73A90, type: bss, vram: 0x80095620, name: timerintr }
+      - { start: 0x73A90, type: bss, vram: 0x80095640, name: globalBSS5 }
       
   - type: data
     start: 0x73A90
