@@ -23,10 +23,10 @@ typedef struct Coordinates2D_s{
     f32 y;
 }Coordinates2D;
 
-extern u32 gRNG;
+extern u32 rand_seed;
 extern MtxF D_8008D030;
 
-u32 RNG(u32 MAX);
+u32 get_rand(u32 MAX);
 
 void func_80023A08(MtxF* arg0, f32 arg1, f32 arg2, f32 arg3);
 

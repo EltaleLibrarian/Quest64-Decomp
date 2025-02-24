@@ -26,7 +26,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800102D0.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_80010510.s")
 void func_80010510(s32 arg0) {
 
     gCurrentTime = arg0;
@@ -34,7 +33,7 @@ void func_80010510(s32 arg0) {
         gCurrentTime = gCurrentTime - gDayLength;
         if (gCurrentDay < 9999) {
             gCurrentDay++;
-            }
+        }
     }
     D_800859D8 = gCurrentTime;
 }
@@ -59,7 +58,6 @@ void func_80010510(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111A4.s")
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/10C80/func_800111D8.s")
 void func_800111D8(s32 arg0, s32 arg1) {
     D_80085A14[arg0].unk0[0] = arg1;
 }

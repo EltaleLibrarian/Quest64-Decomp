@@ -139,23 +139,193 @@ void func_8000111C(unk111Cs* arg0) {
     arg0->task.framebuffer = arg0->unkD14C;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/1850/func_800011DC.s")
-//https://decomp.me/scratch/8sgMl
+extern s32 D_8004C210;
+extern s8 D_8006AC60;
+extern s32 D_8007B300;
+extern s32 D_8007B304;
+extern u32 D_8007B308;
+extern s32 D_8007B340;
+extern s32 D_8007B34C;
+extern void* D_8007B350;
+extern s32 D_8007BC08;
+extern u16 D_80084F12;
+
+struct Struct_800011DC_arg0_sub {
+    /* 0x0058 */ Mtx unk_58[1];
+    /* 0x0098 */ char unk_98[0x8148 - 0x98];
+    /* 0x8148 */ Gfx unk_8148[1];
+    /* 0x8150 */ char unk_814C[0xD14C - 0x8150];
+    /* 0xD14C */ u16* unk_D14C;
+};
+
+struct Struct_800011DC_arg0 {
+    /* 0x0000 */ char unk_00[0x40];
+    /* 0x0040 */ Gfx* unk_40;
+    /* 0x0044 */ s32 unk_44;
+    /* 0x0048 */ char unk_48[0x10];
+    /* 0x0058 */ struct Struct_800011DC_arg0_sub unk_58;
+};
+
+extern u8 D_1000010[];
+extern u8 D_2000000[];
+extern void* DepthBuffer;
+void func_80012BE0(Mtx *arg0);
+void func_80018638(Mtx* arg0);
+void func_8001B19C(Mtx* arg0);
+void func_8001E25C(Mtx* arg0);
+void func_80021524(void);
+void func_800228F8(Mtx* arg0);
+void func_80026A7C(Mtx* arg0);
+void func_8002B510(s32 arg0);
+void func_8002EAA0(void);
+void func_80003870(Mtx* arg0);
+void func_80007F18(Mtx* arg0);
+void func_80008CF4(Mtx* arg0);
+void func_8000B618(Mtx* arg0);
+void func_8000C4C4(Mtx* arg0);
+void func_8000CE8C(Mtx* arg0);
+void func_8000D9BC(Mtx* arg0);
+void func_80010B58(void);
+void func_800111F8(s32 arg0);
+void func_800118D4(Mtx*); //has a different struct in a matched function. I'm scared... 
+void func_80011D28(Mtx* arg0);
+void func_8001249C(void);
+s32 func_8010004C_DA693C_ovl_title(void);
+s32 func_8010009C_DC16BC_ovl_intro(void);
+s32 func_8010008C_E278CC_ovl_ending(void);
+
+void func_800011DC(struct Struct_800011DC_arg0* arg0) {
+    struct Struct_800011DC_arg0_sub* sub = &arg0->unk_58;
+    s32 temp_t8;
+    s32 one = 1;
+
+    gMasterGfxPos = arg0->unk_58.unk_8148;
+    
+    gSPSegment(gMasterGfxPos++, 0x00, 0x00000000);
+    gSPSegment(gMasterGfxPos++, 0x01, osVirtualToPhysical(D_8007B350));
+    gSPSegment(gMasterGfxPos++, 0x02, osVirtualToPhysical(&arg0->unk_58));
+    gSPDisplayList(gMasterGfxPos++, D_1000010);
+    gDPSetDepthImage(gMasterGfxPos++, osVirtualToPhysical(&DepthBuffer));
+    gDPPipeSync(gMasterGfxPos++);
+    gDPSetCycleType(gMasterGfxPos++, G_CYC_FILL);
+    gDPSetColorImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, osVirtualToPhysical(&DepthBuffer));
+    gDPSetFillColor(gMasterGfxPos++, 0xFFFCFFFC);
+    gDPFillRectangle(gMasterGfxPos++, 8, 8, 311, 231);
+    gDPPipeSync(gMasterGfxPos++);
+    gDPSetColorImage(gMasterGfxPos++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 320, osVirtualToPhysical(arg0->unk_58.unk_D14C));
+    
+    if (gGameMode == 1) {
+        gDPSetFillColor(gMasterGfxPos++, (GPACK_RGBA5551(D_8007B300, D_8007B304, D_8007B308, 1) << 16) | (GPACK_RGBA5551(D_8007B300, D_8007B304, D_8007B308, 1)));        
+        gDPFillRectangle(gMasterGfxPos++, 8, 8, 311, 231);
+    } else {
+        gDPSetFillColor(gMasterGfxPos++, (GPACK_RGBA5551(0, 0, 0, 1) << 16) | (GPACK_RGBA5551(0, 0, 0, 1)));
+        gDPFillRectangle(gMasterGfxPos++, 8, 8, 311, 231);
+    }
+    gDPPipeSync(gMasterGfxPos++);
+    gDPSetCycleType(gMasterGfxPos++, G_CYC_2CYCLE);
+    
+    if (gGameMode == 1) {
+        func_80012BE0(sub->unk_58);
+        func_80010B58();
+        if (D_80084F12 & 4) {
+            func_800111F8(D_8007B340);
+            func_8000D9BC(sub->unk_58);
+        }
+        func_800111F8(D_8007B340);
+        func_8000C4C4(sub->unk_58);
+        func_80003870(sub->unk_58);
+        func_80007F18(sub->unk_58);
+        func_80011D28(sub->unk_58);
+        func_8000CE8C(sub->unk_58);
+        func_80008CF4(sub->unk_58);
+        func_8000B618(sub->unk_58);
+        func_8001249C();
+        func_800111F8(D_8007BC08);
+        func_800118D4(sub->unk_58);
+        func_8001B19C(sub->unk_58);
+        func_80018638(sub->unk_58);
+        func_800228F8(sub->unk_58);
+        if (gGameState & 2) {
+            func_8002EAA0();
+        } else if (!(gGameState & 0x4000) && ((u16) D_8007B2E8 != 4)) {
+            func_8001E25C(sub->unk_58);
+        }
+        if (gGameState & 1) {
+            func_80021524();
+        }
+    } else if (gGameMode == 2) {
+        func_80026A7C(sub->unk_58);
+    } else if (gGameMode == 3) {
+        switch (func_8010004C_DA693C_ovl_title()) {
+            case 0:
+                switch (D_8007B344 & 0xF0) {
+                    case 0x10:
+                        gGameMode = 1;
+                        break;
+                    case 0x20:
+                        func_8002B510(0);
+                        break;
+                    case 0x30:
+                        func_8002B510(8);
+                        break;
+                    default:
+                        gGameMode = 1;
+                        break;
+                }
+                break;
+            case 1:
+                gGameMode = 4;
+                break;
+        }
+    } else if (gGameMode == 4) {
+        switch (func_8010009C_DC16BC_ovl_intro()) {
+            case 0:
+                D_8006AC60 = 0;
+                gGameMode = 3;
+                break;
+            case 1:
+                D_8006AC60 = one;
+                gGameMode = 3;
+                break;
+            default:
+                D_8006AC60 = 0;
+                // break; // no break here!
+        }
+    } else if (gGameMode == 5) {
+        if (func_8010008C_E278CC_ovl_ending() == 0) {
+            gGameMode = 3;
+        }
+    }
+    gDPFullSync(gMasterGfxPos++);
+    gSPEndDisplayList(gMasterGfxPos++);
+    osWritebackDCache(D_2000000, 0xD0F0);
+    
+    temp_t8 = gMasterGfxPos - arg0->unk_58.unk_8148;
+    if (D_8007B34C < temp_t8) {
+        D_8007B34C = temp_t8;
+    }
+    D_8004C210 = temp_t8;
+    
+    arg0->unk_40 = sub->unk_8148;
+    arg0->unk_44 = (gMasterGfxPos - sub->unk_8148) * sizeof(Gfx);
+    
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1850/func_80001800.s")
 
 void func_800020B4(void) {
-    OSMesg* sp4C;
+    OSMesg sp4C;
     OSMesg* temp_s5;
 
     D_8007B348 = 0;
     sp4C = NULL;
     D_8008FD0E = 0;
+
     while (gGameMode == 2) {
         func_800314C0(gCurrControllerNum);
         D_8007B2F8 = 0;
-        func_800011DC(D_80301000[D_8007B2F4]);
-        temp_s5 = D_80301000[D_8007B2F4];
+        func_800011DC((void*)D_80301000[D_8007B2F4]);
+        temp_s5 = (OSMesg*)D_80301000[D_8007B2F4];
         func_80026658();
         if (D_8007B348 == 0) {
             D_8007B348++;
@@ -170,11 +340,14 @@ void func_800020B4(void) {
         osSendMesg(D_8007B9D8, temp_s5, 1);
         D_8007B2F4 ^= 1;
     }
+
     if (D_8008FD0E != 0) {
         func_80002EA0();
         D_8007B2E8 = 2;
     }
+
     func_80026A04();
+    
     do {
         osRecvMesg(&D_8007B9E8, &sp4C, 1);
     } while (*(s16*)sp4C != 2);

@@ -38,21 +38,13 @@ typedef struct {
 typedef struct {
     char unk00[0xC0];
     Mtx unkC0[];
-  } teststruct;
+} teststruct;
 
 extern Mtx D_2000000[];
 extern u8 D_8004D050[]; //some display list
 extern s32 D_8007B2F8;
 extern struct_80086DC0 D_80086DC0;
 
-void func_80023570(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
-void func_8002371C(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
-void func_80023DF4(MtxF *arg0, f32 arg1, f32 arg2, f32 arg3);
-void func_80035510(float m[4][4], float n[4][4], float r[4][4]); //guMtxCatF
-void func_80023A08(MtxF*, f32, f32, f32); 
-void func_8001B448(u8, u8*, u8, u8, s32, s32);
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B0D0.s")
 void func_8001B0D0(void) {
     s32 var_v1;
     Dust* var_v0;
@@ -67,8 +59,6 @@ void func_8001B0D0(void) {
     gNumDustParticlesToSpawn = 0;
 }
 
-
-//#pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B108.s")
 Dust* func_8001B108(Dust* arg0) {
     Dust* ret = D_80088428;
     u32 i = 0x100;
@@ -87,7 +77,6 @@ Dust* func_8001B108(Dust* arg0) {
     return ret;
 }
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B19C.s")
 void func_8001B19C(teststruct* arg0) {
     s32 i;
     u8* dust_texture_ptr;
@@ -136,4 +125,5 @@ void func_8001B19C(teststruct* arg0) {
         dust++;
     }
 }
+
 #pragma GLOBAL_ASM("asm/nonmatchings/1BCD0/func_8001B448.s")

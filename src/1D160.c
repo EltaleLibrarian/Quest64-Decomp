@@ -4,7 +4,6 @@
 #include "33D0.h"
 #include "1D160.h"
 
-//#pragma GLOBAL_ASM("asm/nonmatchings/1D160/func_8001C560.s") 
 void func_8001C560(void) {
     gBattleState &= 0x8000;
     D_8008C574 = 0.0f;

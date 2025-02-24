@@ -8,7 +8,7 @@ typedef struct {
     u8 unk5;
     s8 unk6;
     s8 unk7;
-    s32 unk8;
+    u8* unk8;
     s32 unkC;    
 }unk32218s;
 
@@ -29,22 +29,16 @@ extern u8 gPakMenuScroll;
 extern s32 D_80092CC0;
 extern u16 D_80092D1A;
 extern s32 D_80092D1C;
-extern s32 D_80092D20;
+extern void* D_80092D20;
 extern OSMesgQueue* D_80092D28;
 extern void* D_80092D2C;
-extern s32 D_80092D30;
+extern u16* D_80092D30;
 extern s16 D_80092D34;
 extern s16 D_80092D36;
 
 //may be a struct, not a u16*
 extern u16* D_8006F3F8;
 
-
-
-void func_80031CF0(u16 arg0, s8* arg1);
-void func_80031DD4(s32 arg0);
-void func_80031F1C(s16 arg0, s16 arg1);
-void func_80031F74(u8* arg0);
 //func_80031FBC
 //func_80032020
 //func_80032040

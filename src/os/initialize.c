@@ -1,4 +1,5 @@
 #include "common.h"
+#include "PR/os_internal.h"
 
 //TODO: is the MHz on the right correct?
 #define OS_VI_NTSC_CLOCK  0x02E6D354  // 48.625 MHz

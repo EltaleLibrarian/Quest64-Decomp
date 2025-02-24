@@ -6,7 +6,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/overlays/intro/DC1620/func_80100000_ovl_intro.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/overlays/intro/DC1620/func_8010009C_DC16BC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/overlays/intro/DC1620/func_8010009C_DC16BC_ovl_intro.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/overlays/intro/DC1620/func_80100634_ovl_intro.s")
 

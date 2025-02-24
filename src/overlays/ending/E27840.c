@@ -18,7 +18,7 @@ void func_80100000_ovl_ending(void) {
     D_80156FD8 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/overlays/ending/E27840/func_8010008C_E278CC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/overlays/ending/E27840/func_8010008C_E278CC_ovl_ending.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/overlays/ending/E27840/func_80100184_ovl_ending.s")
 
