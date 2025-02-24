@@ -21,7 +21,6 @@ dma_write                 = 0x80024260; //type:func
 count_digits              = 0x80024330; //type:func
 UpdateBGM                 = 0x800267B8; //rom:0x273B8
 DepthBuffer = 0x802DA800;
-__osMaxControllers = 0x80095491;
 __osPfsPifRam = 0x80095660;
 __osSiRawStartDma = 0x80046950;
 __osPiDevMgr = 0x8006F420; //size:0x1c
@@ -47,6 +46,7 @@ __osEventStateTab = 0x80093F20;
 alSndpStop = 0x80039960;
 alEvtqPostEvent = 0x8003FE6C;
 alSndpSetVol = 0x80039A10;
+__osAiDeviceBusy = 0x800426A0;
 
 //os functions
 initPFSPaks               = 0x80031ACC;
@@ -425,6 +425,12 @@ alBnkfNew = 0x80038404;
 alSeqpSetBank = 0x80038550;
 __OSGlobalIntMask = 0x8006F410; //type:s32
 __osException = 0x8003CA70;
+osCartRomInit = 0x8003D550;
+__CartRomHandle = 0x800954E0; //size:0x74
+__osContLastCmd = 0x80095490;
+__osMaxControllers = 0x80095491;
+__osContDataCrc = 0x80046AB0;
+__osContAddressCrc = 0x80046A00;
 
 __ull_rshift = 0x80039AD0;
 __ull_rem = 0x80039AFC;

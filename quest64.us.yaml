@@ -150,7 +150,7 @@ segments:
       - [0x374E0, c, seqpsetvol]
       - [0x37520, c, synthesizer]
       - [0x37C00, c, os/O1/aigetlen]
-      - [0x37C10, c, aisetnextbuf]
+      - [0x37C10, c, libultra/io/aisetnextbuf]
       - [0x37CC0, c, n_alseqpgetvol]
       - [0x37CD0, c, os/csplayer]
       - [0x38F00, c, bnkf]
@@ -195,7 +195,7 @@ segments:
       - [0x3E030, c, bzero]
       - [0x3E0D0, c, interrupt]
       - [0x3E110, c, thread]
-      - [0x3E150, c, cartrominit]
+      - [0x3E150, c, libultra/io/cartrominit]
       - [0x3E250, c, os/leodiskinit]
       - [0x3E350, c, siacsDuplicate]
       - [0x3E410, c, getthreadpri]
@@ -228,7 +228,7 @@ segments:
       - [0x42470, c, env]
       - [0x430D0, c, auxbus]
       - [0x431E0, c, save]
-      - [0x432A0, c, ai]
+      - [0x432A0, c, libultra/io/ai]
       - [0x432D0, c, seqplayer]
       - [0x44C10, c, synaddplayer]
       - [0x44C60, c, synstopvoice]
@@ -244,7 +244,7 @@ segments:
       - [0x453F0, c, siacs]
       - [0x454B0, c, os/pfsgetstatus]
       - [0x456F0, c, os/contpfs]
-      - [0x46450, c, os/contramread]
+      - [0x46450, c, libultra/io/contramread]
       - [0x467B0, c, os/pfschecker]
       - [0x47210, c, os/pfsisplug]
       - [0x47550, c, sirawdma]
@@ -276,6 +276,8 @@ segments:
       - [0x70000, .data, os/initialize] #8006F400
       - [0x70020, .data, os/pimgr] #8006F410
       - [0x70040, data]
+      - [0x715A0, .data, libultra/io/aisetnextbuf]
+      - [0x715B0, data]
       - [0x716A0, .data, libc/xprintf]
       - [0x716F0, data]
       - [0x71AC0, .data, libc/xlitob]
@@ -332,6 +334,8 @@ segments:
       - { start: 0x73A90, type: bss, vram: 0x80093FC0, name: globalBSS2 }
       - { start: 0x73A90, type: .bss, vram: 0x80095200, name: libultra/gu/position }
       - { start: 0x73A90, type: bss, vram: 0x80095210, name: globalBSS3 }
+      - {start: 0x73A90, type: .bss, vram: 0x800954E0, name: libultra/io/cartrominit}
+      - {start: 0x73A90, type: bss, vram: 0x80095560, name: globalBSS4 }
       
   - type: data
     start: 0x73A90

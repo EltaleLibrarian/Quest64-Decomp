@@ -107,12 +107,32 @@ typedef struct
 
 //from: http://en64.shoutwiki.com/wiki/SI_Registers_Detailed#CONT_CMD_Usage
 #define CONT_CMD_REQUEST_STATUS 0
-#define CONT_CMD_READ_BUTTON 1
-#define CONT_CMD_READ_MEMPACK 2
-#define CONT_CMD_WRITE_MEMPACK 3
-#define CONT_CMD_READ_EEPROM 4
-#define CONT_CMD_WRITE_EEPROM 5
-#define CONT_CMD_RESET 0xff
+#define CONT_CMD_READ_BUTTON    1
+#define CONT_CMD_READ_PAK       2
+#define CONT_CMD_WRITE_PAK      3
+#define CONT_CMD_READ_EEPROM    4
+#define CONT_CMD_WRITE_EEPROM   5
+#define CONT_CMD_READ36_VOICE   9
+#define CONT_CMD_WRITE20_VOICE  10
+#define CONT_CMD_READ2_VOICE    11
+#define CONT_CMD_WRITE4_VOICE   12
+#define CONT_CMD_SWRITE_VOICE   13
+#define CONT_CMD_CHANNEL_RESET  0xFD
+#define CONT_CMD_RESET          0xFF
+
+// Bytes transmitted for each joybus command
+#define CONT_CMD_REQUEST_STATUS_TX 1
+#define CONT_CMD_READ_BUTTON_TX    1
+#define CONT_CMD_READ_PAK_TX       3
+#define CONT_CMD_WRITE_PAK_TX      35
+#define CONT_CMD_READ_EEPROM_TX    2
+#define CONT_CMD_WRITE_EEPROM_TX   10
+#define CONT_CMD_READ36_VOICE_TX   3
+#define CONT_CMD_WRITE20_VOICE_TX  23
+#define CONT_CMD_READ2_VOICE_TX    3
+#define CONT_CMD_WRITE4_VOICE_TX   7
+#define CONT_CMD_SWRITE_VOICE_TX   3
+#define CONT_CMD_RESET_TX          1
 
 #define CONT_CMD_REQUEST_STATUS_TX 1
 #define CONT_CMD_READ_BUTTON_TX 1
@@ -121,6 +141,20 @@ typedef struct
 #define CONT_CMD_READ_EEPROM_TX 2
 #define CONT_CMD_WRITE_EEPROM_TX 10
 #define CONT_CMD_RESET_TX 1
+
+// Bytes received for each joybus command
+#define CONT_CMD_REQUEST_STATUS_RX 3
+#define CONT_CMD_READ_BUTTON_RX    4
+#define CONT_CMD_READ_PAK_RX       33
+#define CONT_CMD_WRITE_PAK_RX      1
+#define CONT_CMD_READ_EEPROM_RX    8
+#define CONT_CMD_WRITE_EEPROM_RX   1
+#define CONT_CMD_READ36_VOICE_RX   37
+#define CONT_CMD_WRITE20_VOICE_RX  1
+#define CONT_CMD_READ2_VOICE_RX    3
+#define CONT_CMD_WRITE4_VOICE_RX   1
+#define CONT_CMD_SWRITE_VOICE_RX   1
+#define CONT_CMD_RESET_RX          3
 
 #define CONT_CMD_REQUEST_STATUS_RX 3
 #define CONT_CMD_READ_BUTTON_RX 4

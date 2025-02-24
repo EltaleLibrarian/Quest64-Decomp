@@ -31,7 +31,7 @@ AUDIO_PATH = "src/libultra/audio"
 IO_PATH = "src/libultra/io"
 GU_PATH = "src/libultra/gu"
 
-COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0H/ -Iinclude/2.0H/PR -Isrc"
+COMMON_INCLUDES = "-I. -Iinclude -Iinclude/2.0H/ -Iinclude/2.0H/PR -Isrc -Isrc/libultra"
 IDO_DIR = f"{TOOLS_DIR}/ido_5.3/usr/lib/cc"
 GAME_CC_DIR = f"$ASM_PROC $ASM_PROC_FLAGS {IDO_DIR} --$AS $ASFLAGS"
 TEST_TEMP = f"python3 tools/asm-processor/build.py --input-enc=utf-8 --output-enc=euc-jp {IDO_DIR} -- mips-linux-gnu-as -EB -mtune=vr4300 -march=vr4300 -mabi=32"

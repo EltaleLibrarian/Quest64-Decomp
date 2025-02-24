@@ -71,4 +71,3 @@ void guPosition(Mtx *m, float r, float p, float h, float s,
 
     guMtxF2L(mf, m);
 }
- 
