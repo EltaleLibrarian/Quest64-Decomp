@@ -1,6 +1,14 @@
 #include "common.h"
 
+extern OSThread D_8008D090; //Almost certainly OSThread type. 
+extern ALHeap D_8008F240;
 extern OSMesgQueue D_8008F288;
+extern ALSndPlayer D_8008F620;
+extern s16* D_8008F68C;
+extern s32 D_8008F92C;
+extern s32 D_800539E4;
+
+extern void* func_80024BEC;
 
 //loads an overlay
 void func_80024690(s32 devAddr, void* vAddr, s32 nbytes) {
@@ -23,7 +31,11 @@ void func_80024690(s32 devAddr, void* vAddr, s32 nbytes) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025040.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800250E8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800250E8.s")
+void func_800250E8(void* arg0) {
+    osCreateThread(&D_8008D090, 5, &func_80024BEC, arg0, &D_8008F240, 0x32);
+    osStartThread(&D_8008D090);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002513C.s")
 
@@ -39,13 +51,28 @@ void func_80024690(s32 devAddr, void* vAddr, s32 nbytes) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025634.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002568C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002568C.s")
+void func_8002568C(s32 arg0) {
+    alSndpSetSound(&D_8008F620, D_8008F68C[arg0]);
+    alSndpStop(&D_8008F620);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800256D4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800256D4.s")
+void func_800256D4(s32 arg0) {
+    alSndpSetSound(&D_8008F620, D_8008F68C[arg0]);
+    alSndpGetState(&D_8008F620);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_8002571C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800258F8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/25290/func_800258F8.s")
+void func_800258F8(s32 arg0) {
+    if ((arg0 >= 0) && (arg0 < 0x47)) {
+        D_8008F92C = (&D_800539E4)[arg0];
+        return;
+    }
+    D_8008F92C = D_800539E4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/25290/func_80025938.s")
 

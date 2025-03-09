@@ -98,6 +98,8 @@ cosf                      = 0x800361F0; //type:func
 __CSPPostNextSeqEvent     = 0x800370d0;
 
 alSeqpGetState 			  = 0x800390f0;
+alSndpSetSound            = 0x800398B0; //type:func
+alSndpGetState 			  = 0x800398d0; //type:func
 osPfsInitPak              = 0x80039d90;
 
 osMotorInit               = 0x8003a4bc;
@@ -148,6 +150,14 @@ osPfsFindFile             = 0x80046fc0;
 rspbootTextStart = 0x80049EF0; // rom:0x4AAF0 name_end:rspbootTextEnd
 gspFast3DTextStart = 0x80049FC0; // rom:0x4ABC0 size:0x1430 name_end:gspFast3DTextEnd
 aspMainTextStart = 0x8004B3F0; //size:0xe20 name_end:aspMainTextEnd
+
+gMsg_obtained   = 0x8004C460; //rom:0x4D060 size:0x10
+
+gVert_Spirit          = 0x8004C718;
+gDL_Spirit            = 0x8004C758;
+gTexture_Ci4_Spirit   = 0x8004C7A8; 
+
+
 gspFast3DDataStart = 0x800723D0; //name_end:gspFast3DDataEnd
 gThreadOutStack = 0x8031B2A0;
 
@@ -169,6 +179,10 @@ gMsg_Shannon_Mammon_has_been_destroyed   = 0x80054C04;
 gPal_Ci8_Fire             = 0x8005C958;
 gMsg_num_zero             = 0x8005F98C;
 gMsg_NEW_DATA             = 0x8005F9A0;
+
+gMessageBoxAttributes     = 0x8005F9B8; //size:0x8
+gYesNoBoxAttributes       = 0x8005F9F8; //size:0x8
+gMessageSpeed             = 0x8005FA00; //size:0x1
 
 gMsg_Checking_Controller_Pak = 0x80069F90;
 gMsg_Loading              = 0x80069FB4;
@@ -298,6 +312,9 @@ gPFS                      = 0x80092898;
 gPad                      = 0x80092AA8; //size:0x05
 
 gPakMenuScroll            = 0x80092D0E; //type:u8 size:0x01
+
+
+
 
 
 gBossVAddr                = 0x802A7BC0; //size:0x4
@@ -434,6 +451,13 @@ vi = 0x80070A20;
 __osViCurr = 0x80070A80;
 __osViNext = 0x80070A84;
 __osTimerList = 0x80070A90;
+
+
+
+gMessageBoxOpen             = 0x800905C0;
+gMessageBoxOptionSelected   = 0x800905C4; 
+
+
 __osCurrentTime = 0x80095620;
 __osBaseCounter = 0x80095628;
 __osViIntrCount = 0x8009562C;
@@ -485,3 +509,39 @@ __ll_mul = 0x80039C38;
 __ull_divremi = 0x80039C68;
 __ll_mod = 0x80039CC8;
 __ll_rshift = 0x80039D64;
+
+gPal_Ci8_HUD                   = 0x80399AB0; //rom:0xD77380
+gTexture_Ci8_HUD               = 0x80399CB0; //rom:0xD77580
+
+gTexture_RGBA16_HUD_numerals   = 0x8039CF90; //rom:0xD7A860
+
+gPal_Ci8_HUD_magic             = 0x8039D990; //rom:0xD7B260
+gTexture_Ci8_HUD_magic         = 0x8039DB90; //rom:0xD7B460
+
+gPal_Ci8_spell_names           = 0x803A1F10; //rom:0xD7F7E0
+gTexture_Ci8_spell_names       = 0x803A2110; //rom:0xD7F9E0
+
+gPal_Ci8_status_symbols        = 0x803A2960; //rom:0xD80230
+gTexture_status_symbols        = 0x803A2B60; //rom:0xD80430
+
+gPal_Ci8_beta_Miss_Escape      = 0x803A4B60; //rom:0xD82430
+gTexture_Ci8_beta_Miss_Escape  = 0x803A4D60; //rom:0xD82630
+
+gPal_Ci8_speech_bubble         = 0x803A5760; //rom:0xD83030
+gTexture_Ci8_speech_bubble     = 0x803A5960; //rom:0xD83230
+
+gPal_Ci8_exclamation_mark      = 0x803A60A0; //rom:0xD83970
+gTexture_Ci8_exclamation_mark  = 0x803A62A0; //rom:0xD83B70
+
+gPal_Ci8_question_mark         = 0x803A6480; //rom:0xD83D50
+gTexture_Ci8_question_mark     = 0x803A6680; //rom:0xD83F50
+
+gPal_Ci8_staff                 = 0x803A6950; //rom:0xD84220
+gTexture_Ci8_staff             = 0x803A6B50; //rom:0xD84420
+
+
+gHUD_magic_texture_attributes  = 0x803A6F60;
+gHUD_status_symbols_attributes = 0x803A6F70;
+
+gItemNamesStart                = 0x803A931C; //rom:0xD86BEC
+

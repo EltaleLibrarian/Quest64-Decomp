@@ -138,7 +138,7 @@ segments:
       - [0x36440, c, ortho]
       - [0x36600, c, perspective]
       - [0x36890, c, lookatref]
-      - [0x36D50, c, translate]
+      - [0x36D50, c, libultra/gu/translate]
       - [0x36DF0, c, cosf]
       - [0x36F60, c, sprintf]
       - [0x36FE0, c, invalicache]
@@ -274,7 +274,14 @@ segments:
       - [0x4AAF0, databin, rspBootText]
       - [0x4ABC0, databin, gspFast3DText]
       - [0x4BFF0, databin, aspMainText]
-      - [0x4CE10, data]
+      - [0x4CE10, data] #goes with 1850.c
+      - [0x4CE30, data] #33D0.c
+      - [0x4CE80, data] #8650.c
+      - [0x4CE90, data] #97B0.c
+      - [0x4CEC0, data] #C120.c
+      - [0x4CED0, data] #C910.c
+      - [0x4D030, data] #10C80.c
+      - [0x4D060, data] #12740.c
       - [0x70000, .data, libultra/os/initialize] #8006F400
       - [0x70020, .data, libultra/io/pimgr] #8006F410
       - [0x70040, data]
@@ -360,6 +367,7 @@ segments:
 
   - type: databin
     start: 0x77560
+    vram: 0x80100000
     name: unkData2
     subsegments:
       - [0x77560, databin]
@@ -370,11 +378,35 @@ segments:
     subsegments:
       - [0xD4B3C0, databin]
 
-  - type: databin
+  - type: data
     start: 0xD77380
+    vram: 0x80399AB0
     name: unkData4
     subsegments:
-      - [0xD77380, databin]
+      - [0xD77380, databin, HUD/palette_hud_Ci8]
+      - [0xD77580, databin, HUD/texture_HUD_Ci8]
+      - [0xD7A860, databin, HUD/texture_hud_numbers_rgba16]
+      - [0xD7B260, databin, HUD/palette_hud_magic_Ci8]
+      - [0xD7B460, databin, HUD/hud_magic_textures_Ci8] #216x80
+      - [0xD7F7E0, databin, HUD/palette_spell_names_Ci8]
+      - [0xD7F9E0, databin, HUD/texture_spell_names_Ci8]
+      - [0xD80230, databin, HUD/palette_status_symbols_Ci8]
+      - [0xD80430, databin, HUD/texture_status_symbols_Ci8]
+      - [0xD82430, databin, HUD/palette_beta_Miss_Escape_Ci8]
+      - [0xD82630, databin, HUD/texture_beta_Miss_Escape_Ci8]
+      - [0xD83030, databin, HUD/palette_speech_bubble_Ci8]
+      - [0xD83230, databin, HUD/texture_speech_bubble_Ci8]
+      - [0xD83970, databin, HUD/palette_exclamation_mark]
+      - [0xD83B70, databin, HUD/texture_exclamation_mark]
+      - [0xD83D50, databin, HUD/palette_question_mark]
+      - [0xD83F50, databin, HUD/texture_question_mark]
+      - [0xD84220, databin, HUD/palette_staff]
+      - [0xD84420, databin, HUD/texture_staff]
+      - [0xD84810, data, HUD/unknown]
+      
+
+
+
 
   - type: databin
     start: 0xD884F0
