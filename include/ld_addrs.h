@@ -3,6 +3,13 @@
 
 #include "common.h"
 
+extern Addr Area_Maps_DATA_END;
+extern Addr Area_Maps_DATA_SIZE;
+extern Addr Area_Maps_DATA_START;
+extern Addr Area_Maps_ROM_END;
+extern Addr Area_Maps_ROM_START;
+extern Addr Area_Maps_VRAM;
+extern Addr Area_Maps_VRAM_END;
 extern Addr SE_ctl_DATA_END;
 extern Addr SE_ctl_DATA_SIZE;
 extern Addr SE_ctl_DATA_START;
@@ -165,6 +172,13 @@ extern Addr unkData5_ROM_END;
 extern Addr unkData5_ROM_START;
 extern Addr unkData5_VRAM;
 extern Addr unkData5_VRAM_END;
+extern Addr unkData6_DATA_END;
+extern Addr unkData6_DATA_SIZE;
+extern Addr unkData6_DATA_START;
+extern Addr unkData6_ROM_END;
+extern Addr unkData6_ROM_START;
+extern Addr unkData6_VRAM;
+extern Addr unkData6_VRAM_END;
 extern Addr unkData_DATA_END;
 extern Addr unkData_DATA_SIZE;
 extern Addr unkData_DATA_START;

@@ -13,7 +13,7 @@ typedef struct {
     u8 unk4;
     char unk5[0xB];
     NPCData3* unk10;
-    u8* unk14;
+    u8* NPCName;
     u16 unk18;
 }NPCData2;
 
@@ -43,7 +43,7 @@ typedef struct {
 /*0x72*/char unk72[0x2];
 /*0x74*/u16 unk74;
 /*0x76*/char unk76[0xA];
-/*0x80*/NPCData2* unk80;    
+/*0x80*/NPCData2* NPCData2;    
 }NPCData;
 
 extern u8 gMessageBuffer[0x400];
@@ -51,4 +51,6 @@ extern u8 gNPCName[0x20];
 extern NPCData gNPCData[0x10];
 
 void func_80007F18(Mtx* arg0);
+void LoadNPCName(NPCData* arg0, s32 arg1);
+void func_80008AD8(s32 arg0, u8 *arg1);
 #endif

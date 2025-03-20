@@ -44,7 +44,22 @@ void func_800231B0(f32* arg0, f32* arg1) {
     *arg1 *= temp_f2_2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/el_math/func_80023210.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/el_math/func_80023210.s")
+float func_80023210(f32 arg0, f32 arg1) {
+    float var_f2;
+    
+    if (arg1 == 0.0f) {
+        var_f2 = arg0 >= 0.0f ? M_PI/2 : -M_PI/2;
+    } else if (arg1 > 0.0f) {
+        var_f2 = calc_arctan_in_radians(arg0 / arg1);
+    } else if ((arg1 < 0.0f) && (arg0 <= 0.0f)) {
+        var_f2 = calc_arctan_in_radians(arg0 / arg1) - M_PI;
+    } else {
+        var_f2 = calc_arctan_in_radians(arg0 / arg1) + M_PI;
+
+    }
+    return var_f2;
+}
 
 void rotateCoordinatesByAngle(f32 angle, Coordinates2D* coordinates) {
     f32 sinAngle;

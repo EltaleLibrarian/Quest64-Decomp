@@ -106,6 +106,7 @@ void func_8002E628(s32 arg0, u8 arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002E768.s")
+//https://decomp.me/scratch/cqbbL
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_8002EAA0.s")
 

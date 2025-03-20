@@ -1,5 +1,9 @@
 #include "common.h"
 
+#define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
+
+extern u8 gInventory[150];
+
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021170.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021214.s")
@@ -25,7 +29,18 @@ s32 func_80021240(u8 itemID) {
     return item_exists;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212A0.s")
+void func_800212A0(u8 arg0) {
+    s32 i = 0;
+
+    do {
+        if(gInventory[i] == 0xFF)
+            break;
+        i++;
+    } while(i < ARRAY_COUNT(gInventory));
+
+    gInventory[i] = arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_800212E4.s")
 

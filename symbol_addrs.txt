@@ -14,12 +14,18 @@ nnScExecuteAudio          = 0x80000900;
 nnScExecuteGraphics       = 0x80000A80;
 nnScWaitTaskReady         = 0x80000BB4;
 
+
+LoadNPCName               = 0x80008A00; //type:func
+
 get_rand                       = 0x80022FD0; //rom:0x23BD0 type:func
 calc_arctan_in_radians    = 0x80023028; //rom:0x23C28 type:func
 rotateCoordinatesByAngle  = 0x800232F4; //rom:0x23EF4 type:func
 dma_write                 = 0x80024260; //type:func
 count_digits              = 0x80024330; //type:func
-UpdateBGM                 = 0x800267B8; //rom:0x273B8
+UpdateBGM                 = 0x800267B8; //type:func rom:0x273B8
+UpdateBGMDelay            = 0x800267F8; //type:func rom:0x273F8
+GetMapBGM                 = 0x8002684C; //type:func rom:0x2744C
+
 DepthBuffer = 0x802DA800;
 __osPfsPifRam = 0x80095660;
 __osSiRawStartDma = 0x80046950;
@@ -171,12 +177,22 @@ gMsg_Brian_won_the_battle       = 0x8004D274;
 D_8004D740                = 0x8004D740; 
 rand_seed                      = 0x8004D748; //type:u32 size:0x4
 
+gMapBGMTable              = 0x80053B00;
+
 gSaveSpawnLocationTbl     = 0x80054048;
 
 gMsg_Grand_Abbott_intro                  = 0x80054828;
 gMsg_Shannon_Mammon_has_been_destroyed   = 0x80054C04;
 
 gPal_Ci8_Fire             = 0x8005C958;
+
+gMenuTexturePtrs          = 0x8005F0D0;
+
+gAreaMapPaletteLocations  = 0x8005F82C;
+
+gExpSpherePalettePtrs     = 0x8005F92C;
+gExpSphereTexturePtrs     = 0x8005F93C;
+
 gMsg_num_zero             = 0x8005F98C;
 gMsg_NEW_DATA             = 0x8005F9A0;
 
@@ -236,6 +252,123 @@ gSaveLocation_BRANNOCH_CASTLE      = 0x8006ABD4;
 gSaveLocation_FLOATING_MONASTERY   = 0x8006ABE8;
 
 gSaveLocationNameTable             = 0x8006AC00;
+
+
+
+gPal_Ci8_Menues                                        = 0x80060138;
+gTexture_Ci8_Menues_BG                                 = 0x80060340;
+gTexture_Ci8_Menues_Hand_Cursor                        = 0x80060448;
+gTexture_Ci8_Menues_DELETED1                           = 0x80060520;
+gTexture_Ci8_Menues_DELETED2                           = 0x80060530;
+gTexture_Ci8_Menues_Quill                              = 0x80060540;
+gTexture_Ci8_Menues_Circle                             = 0x800605D8;
+gTexture_Ci8_Menues_Arrow_Left                         = 0x80060620;
+gTexture_Ci8_Menues_Arrow_Right                        = 0x800606D8;
+gTexture_Ci8_Menues_DELETED3                           = 0x80060790;
+gTexture_Ci8_Menues_DELETED4                           = 0x800607A0;
+gTexture_Ci8_Menues_Text_0                             = 0x800607B0;
+gTexture_Ci8_Menues_Text_1                             = 0x80060808;
+gTexture_Ci8_Menues_Text_2                             = 0x80060860;
+gTexture_Ci8_Menues_Text_3                             = 0x800608B8;
+gTexture_Ci8_Menues_Text_4                             = 0x80060910;
+gTexture_Ci8_Menues_Text_5                             = 0x80060968;
+gTexture_Ci8_Menues_Text_6                             = 0x800609C0;
+gTexture_Ci8_Menues_Text_7                             = 0x80060A18;
+gTexture_Ci8_Menues_Text_8                             = 0x80060A70;
+gTexture_Ci8_Menues_Text_9                             = 0x80060AC8;
+gTexture_Ci8_Menues_Text_Slash                         = 0x80060B20;
+gTexture_Ci8_Menues_Text_Percent                       = 0x80060B78;
+gTexture_Ci8_Menues_Text_Plus                          = 0x80060BD0;
+gTexture_Ci8_Menues_Text_Minus                         = 0x80060C28;
+gTexture_Ci8_Menues_Text_PlusMinus                     = 0x80060C80;
+gTexture_Ci8_Menues_Text_Colon                         = 0x80060CD8;
+gTexture_Ci8_Menues_Text_Status                        = 0x80060D30;
+gTexture_Ci8_Menues_Text_HP                            = 0x800610E0;
+gTexture_Ci8_Menues_Text_MP                            = 0x80061250;
+gTexture_Ci8_Menues_Text_Def                           = 0x800613C8;
+gTexture_Ci8_Menues_Text_Agi                           = 0x800615F0;
+gTexture_Ci8_Menues_DELETED5                           = 0x800617A0;
+gTexture_Ci8_Menues_Text_exp                           = 0x800617B0;
+gTexture_Ci8_Menues_Text_Environment                   = 0x80061898;
+gTexture_Ci8_Menues_Text_Message                       = 0x80061DA0;
+gTexture_Ci8_Menues_Text_BGM                           = 0x80062018;
+gTexture_Ci8_Menues_Environment_Bar                    = 0x800622E0;
+gTexture_Ci8_Menues_Environment_Bar_Fill_Color         = 0x80062538;
+gTexture_Ci8_Menues_Environment_Cursor_Blue            = 0x80062630;
+gTexture_Ci8_Menues_Environment_Cursor_Orange          = 0x80062690;
+gTexture_Ci8_Menues_Environment_Cursor_Yellow          = 0x800626F0;
+gTexture_Ci8_Menues_Environment_max                    = 0x80062750;
+gTexture_Ci8_Menues_Environment_min                    = 0x80062818;
+gTexture_Ci8_Menues_Text_Map                           = 0x80062900;
+gTexture_Ci8_Menues_Map_Red_Arrow                      = 0x80062B48;
+gTexture_Ci8_Menues_Text_Elements                      = 0x80062C10;
+gTexture_Ci8_Menues_Elements_Fire                      = 0x80062FD8;
+gTexture_Ci8_Menues_Elements_Earth                     = 0x80063070;
+gTexture_Ci8_Menues_Elements_Wind                      = 0x80063108;
+gTexture_Ci8_Menues_Elements_Water                     = 0x800631A0;
+gTexture_CI8_Menues_Elements_Progress_Bar              = 0x80063238;
+gTexture_CI8_Menues_Elements_Progress_Bar_Fill_Color   = 0x80063420;
+gTexture_Ci8_Menues_DELETED6                           = 0x800634C8;
+gTexture_Ci8_Menues_DELETED7                           = 0x800634D8;
+gTexture_Ci8_Menues_SaveLoad_No                        = 0x800634E8;
+gTexture_Ci8_Menues_UNKNOWN_Black                      = 0x80063660;
+gTexture_Ci8_Menues_UNKNOWN_DarkGrey                   = 0x80063678;
+gTexture_Ci8_Menues_UNKNOWN_LightGrey                  = 0x80063690;
+gTexture_Ci8_Menues_UNKNOWN_Brown                      = 0x800636A8;
+gTexture_Ci8_Menues_UNKNOWN_GreyAgain                  = 0x800636C0;
+gTexture_Ci8_Menues_UNKNOWN_BlackAgain                 = 0x800636D8;
+gTexture_Ci8_Menues_UNKNOWN_LightGreyAgain             = 0x800636F0;
+gTexture_Ci8_Menues_DELETED8                           = 0x80063708;
+gTexture_Ci8_Menues_UNKNOWN_Black_and_Grey             = 0x80063718;
+gTexture_Ci8_Menues_DELETED9                           = 0x80063850;
+gTexture_Ci8_Menues_DELETED10                          = 0x80063860;
+gTexture_Ci8_Menues_SaveLoad_Elements                  = 0x80063870;
+gTexture_Ci8_Menues_SaveLoad_Text_days                 = 0x80063E48;
+gTexture_Ci8_Menues_SaveLoad_Text_days_darker          = 0x80063FD8;
+gTexture_Ci8_Menues_SaveLoad_No_darker                 = 0x80064168;
+gTexture_Ci8_Menues_SaveLoad_HP                        = 0x800642E0;
+gTexture_Ci8_Menues_SaveLoad_MP                        = 0x80064400;
+gTexture_Ci8_Menues_Text_SaveLoad_0_darker             = 0x80064558;
+gTexture_Ci8_Menues_Text_SaveLoad_1_darker             = 0x800645B0;
+gTexture_Ci8_Menues_Text_SaveLoad_2_darker             = 0x80064608;
+gTexture_Ci8_Menues_Text_SaveLoad_3_darker             = 0x80064660;
+gTexture_Ci8_Menues_Text_SaveLoad_4_darker             = 0x800646B8;
+gTexture_Ci8_Menues_Text_SaveLoad_5_darker             = 0x80064710;
+gTexture_Ci8_Menues_Text_SaveLoad_6_darker             = 0x80064768;
+gTexture_Ci8_Menues_Text_SaveLoad_7_darker             = 0x800647C0;
+gTexture_Ci8_Menues_Text_SaveLoad_8_darker             = 0x80064818;
+gTexture_Ci8_Menues_Text_SaveLoad_9_darker             = 0x80064870;
+gTexture_Ci8_Menues_Text_SaveLoad_Colon_darker         = 0x800648C8;
+gTexture_Ci8_Menues_SaveLoad_Arrow_Up                  = 0x80064920;
+gTexture_Ci8_Menues_SaveLoad_Arrow_Down                = 0x800649E8;
+gTexture_UNKNOWN                                       = 0x80064CB8;
+
+
+gPal_Ci8_Menues_Backestground                          = 0x80064D58;
+gTexture_Ci8_Menues_Backestground_dark                 = 0x80064F60;
+gTexture_Ci8_Menues_Backestground_medium               = 0x80065768;
+gTexture_Ci8_Menues_Backestground_light                = 0x80065F70;
+gTexture_Ci8_Menues_Backestground_lightest             = 0x80066778;
+
+
+gPal_Ci8_Menues_exp_sphere                             = 0x80066D80;
+gTexture_Ci8_Menues_exp_sphere_left_half               = 0x80066F88;
+gTexture_Ci8_Menues_exp_sphere_right_half              = 0x80067478;
+
+gPal_Ci8_Menues_exp_sphere_gold_ring                   = 0x80067968;
+gTexture_Ci8_Menues_exp_sphere_gold_ring_left          = 0x80067B70;
+gTexture_Ci8_Menues_exp_sphere_gold_ring_right         = 0x80068198;
+
+gPal_Ci8_Menues_exp_sphere_highlight                   = 0x800687C0;
+gTexture_Ci8_Menues_exp_sphere_highlight_left          = 0x800689C8;
+gTexture_Ci8_Menues_exp_sphere_highlight_right         = 0x80068EB8;
+
+gPal_Ci8_Menues_exp_exp_sphere_filling                 = 0x800693A8;
+gTexture_Ci8_Menues_exp_sphere_filling_left            = 0x800695B0;
+gTexture_Ci8_Menues_exp_sphere_filling_right           = 0x80069AA0;
+
+
+
 
 gPal_Ci4_Controller_Pak_menu_cursor                          = 0x8006AC70;
 gTexture_Ci4_Controller_Pak_menu_cursor                      = 0x8006AC90;
@@ -300,7 +433,12 @@ D_8008C578                = 0x8008C578; //type:s16 size:0x2
 gBattleState              = 0x8008C592; //type:u16 size:0x2
 D_8008C634                = 0x8008C634; //type:s32 size:0x4
 gInventory                = 0x8008CF78; //type:u8 size:0x96
+gCurrentBGM               = 0x8008FCC1; //type:s8
+gPlayBGM                  = 0x8008FCC2; //type:u16
+gBGMDelay                 = 0x8008FCC4; //type:u16
 D_8008FD00                = 0x8008FD00; //type:s8 size:0x4
+
+gSaveFileDataBuffer       = 0x80090460; //type:u8
 
 gCurrControllerNum        = 0x80092870; //type:s8 size:0x1
 gPadStickX                = 0x80092871; //type:s8 size:0x1
@@ -321,6 +459,22 @@ gBossVAddr                = 0x802A7BC0; //size:0x4
 
 gBossFileOffsetTbl        = 0x803A9A90;
 gBossData                 = 0x803A9AD0;
+
+
+gTexture_rgba16_32x32_grass        = 0x80100BB0; //rom:0x78110
+gTexture_rgba16_32x32_tall_grass   = 0x801013B0; //rom:0x78910
+gTexture_rgba16_32x64_grass_bush   = 0x80101BB0; //rom:0x79110
+gTexture_rgba16_32x32_water        = 0x80102BB0; //rom:0x7A110
+gTexture_rgba16_64x16_sign_top     = 0x801033B0; //rom:0x7A910
+gTexture_rgba16_32x32_inn_sign     = 0x80103BB0; //rom:0x7B110
+gTexture_rgba16_32x32_shop_sign    = 0x801043B0; //rom:0x7B910
+gTexture_rgba16_32x32_pub_sign     = 0x80104BB0; //rom:0x7C110
+gTexture_rgba16_64x32_forest_sign  = 0x801053B0; //rom:0x7C910
+gTexture_rgba16_64x32_wood         = 0x801063B0; //rom:0x7D910
+gTexture_rgba16_32x32_under_water  = 0x801073B0; //rom:0x7E910
+gTexture_rgba16_32x32_water_2      = 0x80107BB0; //rom:0x7F110
+gTexture_rgba16_32x32_water_3      = 0x801083B0; //rom:0x7F910
+gTexture_rgba16_32x32_water_4      = 0x80108BB0; //rom:0x80110
 
 
 //overlay vars
@@ -382,6 +536,7 @@ strchr = 0x8003FB74;
 strlen = 0x8003FB4C;
 osPiStartDma = 0x80036510;
 osAiSetFrequency = 0x800366C0;
+alSeqpSetVol     = 0x800368E0;
 osAiSetNextBuffer = 0x80037010;
 osContStartQuery = 0x8003C8E0;
 osContGetQuery = 0x8003C964;
@@ -510,6 +665,7 @@ __ull_divremi = 0x80039C68;
 __ll_mod = 0x80039CC8;
 __ll_rshift = 0x80039D64;
 
+
 gPal_Ci8_HUD                   = 0x80399AB0; //rom:0xD77380
 gTexture_Ci8_HUD               = 0x80399CB0; //rom:0xD77580
 
@@ -543,5 +699,8 @@ gTexture_Ci8_staff             = 0x803A6B50; //rom:0xD84420
 gHUD_magic_texture_attributes  = 0x803A6F60;
 gHUD_status_symbols_attributes = 0x803A6F70;
 
-gItemNamesStart                = 0x803A931C; //rom:0xD86BEC
+
+gItemName_Spirit_Light         = 0x803A931C; //rom:0xD86BEC
+gItemNamePointers              = 0x803A9954;
+gItemDescriptionPtrs           = 0x803A99D4;
 

@@ -282,6 +282,16 @@ segments:
       - [0x4CED0, data] #C910.c
       - [0x4D030, data] #10C80.c
       - [0x4D060, data] #12740.c
+      - [0x4D8D0, data] #15440.c
+      - [0x4DA30, data] #191F0.c
+      - [0x4DC50, data] #1BCD0.c
+      - [0x4DCA0, data] #1D160.c
+      - [0x4DE50, data] #unknown. Has unused data, some from 33D0, and some from hud
+      - [0x4DEC0, data] #hud.c
+      - [0x4E080, data] #inventory.c
+      - [0x4E0B0, data] #unknown/unused
+      - [0x4E0F0, data] #screen_dim.c
+      
       - [0x70000, .data, libultra/os/initialize] #8006F400
       - [0x70020, .data, libultra/io/pimgr] #8006F410
       - [0x70040, data]
@@ -360,23 +370,41 @@ segments:
       
   - type: data
     start: 0x73A90
-    vram: 0x01000000
+    vram: 0x80096850
     name: unkData
     subsegments:
       - [0x73A90, data]
 
-  - type: databin
+  - type: data
     start: 0x77560
     vram: 0x80100000
     name: unkData2
     subsegments:
-      - [0x77560, databin]
+      - [0x77560, vtx]
+      - [0x776C0, data]
+      - [0x78110, databin, gTexture_rgba16_32x32_grass]
+      - [0x78910, databin, gTexture_rgba16_32x32_tall_grass]
+      - [0x79110, databin, gTexture_rgba16_32x64_grass_bush]
+      - [0x7A110, databin, gTexture_rgba16_32x32_water]
+      - [0x7A910, databin, gTexture_rgba16_64x16_sign_top]
+      - [0x7B110, databin, gTexture_rgba16_32x32_inn_sign]
+      - [0x7B910, databin, gTexture_rgba16_32x32_shop_sign]
+      - [0x7C110, databin, gTexture_rgba16_32x32_pub_sign]
+      - [0x7C910, data]
+
+  - type: databin
+    start: 0xCAF50
+    vram: 0x801F8000
+    name: unkData6
+    subsegments:
+      - [0xCAF50, databin]
 
   - type: databin
     start: 0xD4B3C0
+    vram: 0x803303A0
     name: unkData3
     subsegments:
-      - [0xD4B3C0, databin]
+      - [0xD4B3C0, data]
 
   - type: data
     start: 0xD77380
@@ -487,6 +515,13 @@ segments:
     start: 0xEEFCE0
     subsegments:      
     - [0xEEFCE0, databin, SE_tbl]
+
+  - name: Area_Maps
+    type: data
+    start: 0xF4E9E0
+    vram: 0x801C0000
+    subsegments:
+    - [0xF4E9E0, data]
   
   - [0xF94380, databin, rompad] #0xFFs til the end
 

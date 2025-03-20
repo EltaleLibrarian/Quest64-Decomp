@@ -31,7 +31,7 @@ void func_800314C0(s32 cont) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_8003195C.s")
 
-void func_800319E0(s32 pfsIndex, s32 file_no, s32 offset, s32 nbytes, u8* data_buffer) {
+s32 func_800319E0(s32 pfsIndex, s32 file_no, s32 offset, s32 nbytes, u8* data_buffer) {
 	osPfsReadWriteFile(&gPFS[pfsIndex], file_no, PFS_READ, offset, nbytes, data_buffer);
 }
 

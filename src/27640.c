@@ -1,6 +1,10 @@
 #include "common.h"
 #include "bgm.h"
+#include "24E60.h"
+
 //static s8 D_8008FD00[4] = {0, 0, 0, 0};
+
+void func_80029B58(s32, s32, s32, s32, s32); //draws menu stuff to screen. 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/27640/func_80026A40.s")
 
