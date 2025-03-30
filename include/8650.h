@@ -46,6 +46,29 @@ typedef struct {
 /*0x80*/NPCData2* NPCData2;    
 }NPCData;
 
+
+/*
+This will be the animation and transformation struct nested within all the other entity structs
+
+typedef struct s_Animation {
+    PosRot posrot;
+    Vec3f speed_or_direction;
+    f32 scale;
+    f32 collision_scale;
+    Vec3f shadowRot;
+    f32 unk38;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
+    f32 unk48;
+    f32 unk4C;
+    s16 unk50;
+    s16 currentAnimID;
+    u16 currentAnimeFrameNum;
+    u16 totalAnimFrames;
+    u16 animFramerate;
+}*/
+
 extern u8 gMessageBuffer[0x400];
 extern u8 gNPCName[0x20];
 extern NPCData gNPCData[0x10];
@@ -53,4 +76,5 @@ extern NPCData gNPCData[0x10];
 void func_80007F18(Mtx* arg0);
 void LoadNPCName(NPCData* arg0, s32 arg1);
 void func_80008AD8(s32 arg0, u8 *arg1);
-#endif
+#endif 
+

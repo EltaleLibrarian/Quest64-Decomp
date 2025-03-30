@@ -2,7 +2,11 @@
 #include "33D0.h" //includes player struct
 #include "1E4B0.h"
 
-void func_8001D8B0(PlayerPosData* player, s32 next_anim, s32 next_anim_framerate, s32 arg3, s32 arg4, u16 arg5) {
+
+#pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001D8B0.s") 
+//the first arg is incorrect. This funciton handles ALL animation for player, monsters, and NPCs. 
+
+/*void func_8001D8B0(PlayerPosData* player, s32 next_anim, s32 next_anim_framerate, s32 arg3, s32 arg4, u16 arg5) {
 	if (next_anim != -1) {
 		if (next_anim != player->currentAnimID) {
 			player->currentAnimID = next_anim;
@@ -22,7 +26,7 @@ void func_8001D8B0(PlayerPosData* player, s32 next_anim, s32 next_anim_framerate
 		}
 		player->unk5C = arg4;
 	}
-}
+}*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/1E4B0/func_8001D924.s")
 
