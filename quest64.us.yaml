@@ -48,7 +48,7 @@ options:
   data_string_guesser_level: 2
   # libultra_symbols: True
   # hardware_regs: True
-  # gfx_ucode: # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
+  gfx_ucode: f3dex # one of [f3d, f3db, f3dex, f3dexb, f3dex2]
 segments:
   - name: header
     type: databin
@@ -103,7 +103,7 @@ segments:
       - [0x2F1E0, c, 2F1E0]
       - [0x31A10, c]
       - [0x31F00, c, 31F00]
-      - [0x32840, asm]
+      - [0x32840, c, 32840]
       - [0x328F0, c, 328F0]
       - [0x34450, c, libultra/os/initialize]
       - [0x346E0, c, libultra/os/createthread]
@@ -392,12 +392,67 @@ segments:
       - [0x7C110, databin, gTexture_rgba16_32x32_pub_sign]
       - [0x7C910, data]
 
+
+
   - type: databin
     start: 0xCAF50
     vram: 0x801F8000
     name: unkData6
     subsegments:
       - [0xCAF50, databin]
+
+  - type: data
+    start: 0x86B830
+    vram: 0x80206000
+    name: unkIntroData
+    subsegments:
+      - [0x86B830, data]
+      - [0x86BBE0, rgba16, player/unk.rgba16, 8, 8]
+      - [0x86BC60, ia4, player/unk3.ia4, 8, 16]
+      - [0x86BCA0, rgba16, player/unk2.rgba16, 8, 7]
+      - [0x86BD10, ia4, player/unk2.ia4, 16, 16]
+      - [0x86BD90, rgba16, player/face_eyes_open, 32, 32]
+      - [0x86C590, rgba16, player/face_eyes_half_closed, 32, 32]
+      - [0x86CD90, rgba16, player/face_eyes_closed, 32, 32]
+      - [0x86D590, rgba16, player/lower_tabard, 16, 16]
+      - [0x86D790, rgba16, player/chest_gem, 16, 16]
+      - [0x86D990, rgba16, player/cape_ties, 24, 16]
+      - [0x86DC90, rgba16, player/something4, 16, 15]
+      - [0x86DE70, rgba16, player/something5, 8, 16]
+      - [0x86DF70, data]
+      - [0x86EA50, ia4, player/unk.ia4, 24, 24]
+      - [0x86EB70, rgba16, player/staff_handle.rgba16, 16, 16]
+      - [0x86ED70, rgba16, player/staff_head.rgba16, 16, 32]
+      - [0x86F170, vtx]
+      - [0x86F360, vtx]
+      - [0x86F460, vtx]
+      - [0x86F490, vtx]
+      - [0x86F600, vtx]
+      - [0x86F630, vtx]
+      - [0x86F660, gfx]
+      - [0x8714A0, vtx]
+      - [0x8714D0, gfx]
+      - [0x871550, vtx]
+      - [0x871580, gfx]
+      - [0x871600, vtx]
+      - [0x871630, gfx]
+      - [0x8716B0, vtx]
+      - [0x8716E0, gfx]
+      - [0x871760, vtx]
+      - [0x871810, gfx]
+
+  - type: databin
+    start: 0x871900
+    name: unkDataAgain
+    subsegments:
+      - [0x871900, databin]
+
+  - type: data
+    start: 0xD3BE40
+    vram: 0x803AAC20
+    name: InventoryPalettes
+    subsegments:
+      - [0xD3BE40, data, inventory/palettes]
 
   - type: databin
     start: 0xD4B3C0

@@ -98,4 +98,13 @@ s32 func_80031BB0(s32 arg0) {
 }
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031C0C.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/31F00/func_80031C0C.s")
+s32 func_80031C0C(u8* str0, u8* str1, s32 size) {
+  do {
+      if (*str0++ != *str1++) {
+          break;
+      }
+  } while(size--);
+
+  return size;
+}

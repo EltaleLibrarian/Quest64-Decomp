@@ -1,6 +1,8 @@
 #ifndef _33D0_H_
 #define _33D0_H_
 
+#include <animation.h>
+
 //structs
 typedef struct {
     u16 map;
@@ -63,27 +65,7 @@ typedef struct PlayerMainData{
 }PlayerMainData;
 
 typedef struct {
-             PosRot posrot;
-             Vec3f speed;
-             f32 scale;
-             f32 shadowScale;
-             Vec3f shadowRot;
-             f32 unk38;
-             f32 unk3C;
-             f32 unk40;
-             f32 unk44;
-             f32 unk48;
-             f32 unk4C;
-             s16 unk50;
-             s16 currentAnimID;
-             u16 currentAnimFrame;
-             u16 totalAnimFrames;
-             u16 animFramerate;
-             s16 unk5A;
-             u16 unk5C;
-             s16 unk5E;
-             u16 unk60;
-             u16 unk62;
+             TransformAnim transformAnim;
              PlayerMainData* playerMainData;
              void* playerStatusPtr;
              u8 status[7];
@@ -93,7 +75,7 @@ typedef struct {
 extern SaveSpawnLocation gSaveSpawnLocationTbl[17];
 extern unk80085368 D_80085368;
 extern PlayerMainData gPlayerMainData;
-extern PlayerPosData gPlayerData1;
+extern PlayerPosData gPlayerPosData; 
 extern fileBounds D_80053F58[];
 
 

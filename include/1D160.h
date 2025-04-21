@@ -74,6 +74,6 @@ typedef struct {
 }MAP_DATA_1;
 
 extern s32 D_8008C560;
-extern s32 D_8008C564;
+extern s32 D_8008C564; //is actually a pointer to a struct!! 
 extern MAP_DATA_1* gMapDataPtr;
 #endif

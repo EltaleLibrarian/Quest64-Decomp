@@ -25,7 +25,7 @@ extern char D_D305E0[];
 void LoadNPCName(NPCData* NPC, s32 arg1) {
     s32 i;
     
-    dma_write(&D_D305E0[arg1], gMessageBuffer, 1024);
+    dmaLoadFromROM(&D_D305E0[arg1], gMessageBuffer, 1024);
     
     if (NPC->NPCData2->NPCName != NULL) {
         for (i = 0; i < 32; i++) {

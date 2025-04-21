@@ -1,5 +1,6 @@
 #ifndef _MONSTERS_H_
 #define _MONSTERS_H_
+#include <animation.h>
 
 #define ON_GROUND 0
 #define FLYING 1
@@ -64,32 +65,10 @@ typedef struct {
 } UnknownMonsterData2;
 
 typedef struct {
-               PosRot posrot;
-               Vec3f speed;
-               f32 scale;
-               f32 collisionScale;
-               f32 shadowXRot;
-               f32 shadowYRot;
-               f32 shadowZRot;
-               f32 unk38;
-               f32 unk3C;
-               f32 unk40;
-               f32 unk44;
-               f32 unk48;
-               f32 unk4C;
-               s16 monster_id;
-               s16 animation_id;
-               u16 animFrame;
-               u16 totalFrameCnt;
-               u16 animSpeed;
-               u16 nextAnimID;
-               s16 unk5C;
-               s16 unk5E;
-               u16 unk60;
-               u16 unk62;
-               MonsterBaseData *unk64;
-               UnknownMonsterData2 *unk68;
-               UnknownMonsterData2 unk6C;
+    TransformAnim transformAnimation;
+    MonsterBaseData *unk64;
+    UnknownMonsterData2 *unk68;
+    UnknownMonsterData2 unk6C;
 } MonsterBattleData;
 
 typedef struct {

@@ -18,7 +18,7 @@ extern long long int	gspFast3DDataStart[], gspFast3DDataEnd[];
 #define MODE_SPLASH   4
 #define MODE_CREDITS  5
 
-void func_80021170(void);
+void InventoryInit(void);
 void func_80030E58(void);
 void func_800265F0(void);
 void func_800314C0(s32 cont);
@@ -52,7 +52,7 @@ void func_80000C50(s32 arg0) {
         func_80011B40();
         func_800121F0();
         func_800027D0();
-        func_80021170();
+        InventoryInit();
         func_800100D0();
         func_80030E58();
         func_800265F0();

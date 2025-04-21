@@ -3,7 +3,7 @@
 extern OSMesgQueue D_8007B320;
 extern OSIoMesg D_8008D070;
 
-void dma_write(u8* devAddr, void* vAddr, s32 size) {
+void dmaLoadFromROM(u8* devAddr, void* vAddr, s32 size) {
     u32 mesgSize;
 
     osInvalICache(vAddr, size);

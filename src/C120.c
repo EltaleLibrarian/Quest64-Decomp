@@ -28,7 +28,7 @@ void func_8000B530(void)
         fileStart = gBossFileOffsetTbl[data->bossNumber].fileStart;
         fileEnd = gBossFileOffsetTbl[data->bossNumber].fileEnd;
         fileSize = fileEnd - fileStart;
-        dma_write((u8*)fileStart, &gBossVAddr, fileSize); //load boss file from RAM
+        dmaLoadFromROM((u8*)fileStart, &gBossVAddr, fileSize); //load boss file from RAM
         func_8000B7DC(i, data->x, data->y, data->z, &D_8007D1A8);
         D_8007D1A0 = i + 1;
       }

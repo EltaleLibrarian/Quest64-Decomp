@@ -17,10 +17,26 @@ nnScWaitTaskReady         = 0x80000BB4;
 
 LoadNPCName               = 0x80008A00; //type:func
 
+ResetShadowCount          = 0x80011850; //type:func
+PositionActorShadow       = 0x80011860; //type:func
+
+InventoryInit             = 0x80021170; //type:func
+CheckIfInventoryFull      = 0x80021214; //type:func
+CheckForItemInInventory   = 0x80021240; //type:func
+AddItemToInventory        = 0x800212A0; //type:func
+NoEffectItem              = 0x8002224C; //type:func
+CheckIfHealingNeeded      = 0x80022260; //type:func
+CheckIfTeleportPossible   = 0x800222B4; //type:func
+CheckIfSpellItemUsable    = 0x80022300; //type:func
+UseHealingItem            = 0x8002234C; //type:func
+UseWings                  = 0x80022490; //type:func
+UseSpellItem              = 0x8002260C; //type:func
+DrawItemBox               = 0x8002263C; //type:func
+
 get_rand                       = 0x80022FD0; //rom:0x23BD0 type:func
 calc_arctan_in_radians    = 0x80023028; //rom:0x23C28 type:func
 rotateCoordinatesByAngle  = 0x800232F4; //rom:0x23EF4 type:func
-dma_write                 = 0x80024260; //type:func
+dmaLoadFromROM            = 0x80024260; //type:func
 count_digits              = 0x80024330; //type:func
 UpdateBGM                 = 0x800267B8; //type:func rom:0x273B8
 UpdateBGMDelay            = 0x800267F8; //type:func rom:0x273F8
@@ -173,6 +189,9 @@ gMsg_No                   = 0x8004C288;
 
 gMsg_Brian_escape_from_battle   = 0x8004D250;
 gMsg_Brian_won_the_battle       = 0x8004D274;
+
+gCheckItemUsableFuncs           = 0x8004D480;
+gUseItemFuncs                   = 0x8004D490; 
 
 D_8004D740                = 0x8004D740; 
 rand_seed                      = 0x8004D748; //type:u32 size:0x4
@@ -402,7 +421,7 @@ gGameMode                 = 0x8007B2E0; //type:s16 size:0x2
 gGameState                = 0x8007B2E4; //type:s32 size:0x4
 gMasterGfxPos             = 0x8007B2FC;
 gPlayerMainData           = 0x8007BA80; //size:0x4C
-gPlayerData1              = 0x8007BACC; //size:0x73
+gPlayerPosData            = 0x8007BACC;
 gNPCData                  = 0x8007BD30; //size:0x840
 
 gMessageBuffer            = 0x8007C570; //size:0x400
@@ -424,6 +443,9 @@ gCurrentTime              = 0x800859D0; //type:s32 size:0x4
 gDayLength				  = 0x800859d4; //type:s32 size:0x4
 D_800859D8                = 0x800859D8; //type:s32 size:0x4
 gCurrentDay				  = 0x800859e0; //type:u16 size:0x2
+
+gActorShadows                = 0x80085BD0; //size:0x700
+gNumShadowsToDrawThisFrame   = 0x800862D0; //type:u32
 
 gNumDustParticlesToSpawn  = 0x80088420; //type:s32 size:0x4
 D_80088428                = 0x80088428; //size:0x4000
@@ -451,11 +473,14 @@ gPad                      = 0x80092AA8; //size:0x05
 
 gPakMenuScroll            = 0x80092D0E; //type:u8 size:0x01
 
-
-
+gTexture_ia4_cape                    = 0x80209220; //rom:0x86EA50
+gTexture_RGBA16_16x16_staff_handle   = 0x80209340; 
+gTexture_RGBA16_16x32_staff_head     = 0x80209540;
 
 
 gBossVAddr                = 0x802A7BC0; //size:0x4
+
+gItemDataTable            = 0x803A91F0; //size:0x12C
 
 gBossFileOffsetTbl        = 0x803A9A90;
 gBossData                 = 0x803A9AD0;

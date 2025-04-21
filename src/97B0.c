@@ -4,6 +4,18 @@
 #include "1D160.h"
 #include "bgm.h"
 
+typedef struct {
+    u16 unk0; //counts up during boss attack.
+    s16 unk2; //don't know how to trigger. May be padding.
+    void* unk4; //0 unless boss is attacking. Looks like animation data. 
+    void* unk8; //pointer to boss data in normal enemy data memory location. 
+    void* unkC; //pointer to animation struct for boss.    
+}bossAnimationSomething;
+extern bossAnimationSomething D_8007D0C0;
+extern void* D_80054640[4];
+extern void* D_8007C9BC[]; //enemy animation struct
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008BB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_80008C20.s")
@@ -56,8 +68,18 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B170.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B2B8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B2B8.s")
+void func_8000B2B8(void) {
+    D_8007D0C0.unk4 = 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B2C8.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B2C8.s")
+void func_8000B2C8(s32 arg0, void* arg1) {
+    D_8007D0C0.unk0 = 0;
+    D_8007D0C0.unk4 = D_80054640[arg0];
+    D_8007D0C0.unk8 = arg1;
+    D_8007D0C0.unkC = &D_8007C9BC;
+    
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B300.s")
