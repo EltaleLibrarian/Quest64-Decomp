@@ -1,4 +1,4 @@
-#include "common.h"
+#include "common.h" 
 
 typedef struct unk26658_s{
     u8 unk0;
