@@ -2,6 +2,7 @@
 #include "animation.h"
 #include "33D0.h"
 #include "1D160.h"
+#include "24E60.h"
 
 #define ARRAY_COUNT(a) (sizeof(a) / sizeof(a[0]))
 
@@ -14,7 +15,7 @@ typedef int16_t		qs510_t;
 #define ITEM_NOT_USABLE 0
 
 
-typedef struct unk_22260_s3{
+typedef struct ItemData_s{
     u16 canBeUsed;
     u16 type;
     s16 itemArg1;
@@ -101,10 +102,10 @@ extern s32 gGameState;
 extern u8 gInventory[150];
 
 extern u8 D_D3BE40[]; //inv palettes
-extern void* D_803AAC20; //virt inventory palette
+extern void* gPal_Ci8_items_color; //virt inventory palette
 extern u8 D_8008C770[8]; //IDs of items visible in inventory. One per item no matter how many of it you have.  
-extern s32 D_8008C760; //inventory scroll index
-extern s32 D_8008C764; //visible inv offset from start
+extern s32 gInventoryScrollOffset; //inventory scroll index
+extern s32 gHighlightedInventorySlot; //visible inv offset from start
 extern s32 D_8008C768;
 extern u8 D_803A8FF8[]; //DL
 
@@ -123,7 +124,7 @@ void InventoryInit(void) {
     s32 i;
     u8 *temp;
 
-    dmaLoadFromROM(&D_D3BE40, &D_803AAC20, 0x400); //load inventory palette into RAM
+    dmaLoadFromROM(&D_D3BE40, &gPal_Ci8_items_color, 0x400); //load inventory palette into RAM
     i = 8;
     temp = D_8008C770;
     do {
@@ -138,8 +139,8 @@ void InventoryInit(void) {
         *temp++ = 0xFF;
     }
 
-    D_8008C760 = 0;
-    D_8008C764 = 0;
+    gInventoryScrollOffset = 0;
+    gHighlightedInventorySlot = 0;
     D_8008C768 = 0;
 }
 
@@ -225,7 +226,39 @@ void func_800213D8(u8 arg0, TransformAnim* arg1) {
     gUseItemFuncs[temp_a1->type](arg1, temp_a1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021434.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021434.s")
+s32 func_80021434(u16 itemArg) {
+    ItemData* item;
+    s32 slots_left;
+    s32 var_v1;
+    u8* inv_slot;
+    
+    var_v1 = 0;
+    inv_slot = gInventory;
+    slots_left = 0x96;
+
+    while (!var_v1 && *inv_slot != 0xFF) {
+        item = &gItemDataTable[*inv_slot];
+        inv_slot++;
+        
+        if (item->type == 0xF) {
+            var_v1 = itemArg == item->itemArg1;
+        }
+        
+        slots_left--;
+    }
+    
+    if (var_v1 != 0) {
+        inv_slot--;
+        while (slots_left != 0) {
+            slots_left--;
+            inv_slot[0] = inv_slot[1];
+            inv_slot++;
+        }
+        *inv_slot = 0xFF;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/inventory/func_80021524.s")
 
@@ -341,28 +374,16 @@ void UseSpellItem(TransformAnim* arg0, ItemData* item) {
 void DrawItemBox(s32 ulx, s32 uly, s32 width, s32 height) {
 
     gDPPipeSync(gMasterGfxPos++);
-    
-    gDPSetCycleType(gMasterGfxPos++, G_CYC_FILL);
-    
-    gDPSetRenderMode(gMasterGfxPos++, G_RM_NOOP, G_RM_NOOP2);
-    
-    gDPSetFillColor(gMasterGfxPos++, 0x00010001);
-    
+    gDPSetCycleType(gMasterGfxPos++, G_CYC_FILL);  
+    gDPSetRenderMode(gMasterGfxPos++, G_RM_NOOP, G_RM_NOOP2);    
+    gDPSetFillColor(gMasterGfxPos++, 0x00010001);    
     gDPFillRectangle(gMasterGfxPos++,  ulx, uly, (ulx + width), uly);
-
     gDPFillRectangle(gMasterGfxPos++, ulx, (uly + height), (ulx + width) , (uly + height));
-
     gDPFillRectangle(gMasterGfxPos++, ulx , uly, ulx, (uly + height) );
-
     gDPFillRectangle(gMasterGfxPos++, ulx + width, uly, (ulx + width), uly + height );
-
     gDPFillRectangle(gMasterGfxPos++ , ((ulx + 3)), ((uly + height) + 1), ((ulx + width) + 2) , ((uly + height) + 2));
-
     gDPFillRectangle(gMasterGfxPos++, ((ulx + width) + 1), (uly + 3) , ((ulx + width) + 2), ((uly + height) + 1));
-
     gSPDisplayList(gMasterGfxPos++, D_803A8FF8);
-
-    // Needs to be shifted by 2. Multiplying by 4 technically has the same effect, but doesn't match
     gSPTextureRectangle(gMasterGfxPos++, ((ulx + 1) <<2) ,((uly+1)<<2), ((ulx + width) * 4), ((uly + height) * 4) , G_TX_RENDERTILE, 0, 0, qs510(1), qs510(1));
 
 }

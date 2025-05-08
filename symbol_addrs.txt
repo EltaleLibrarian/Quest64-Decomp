@@ -454,6 +454,8 @@ D_8008C574                = 0x8008C574; //type:f32 size:0x4
 D_8008C578                = 0x8008C578; //type:s16 size:0x2
 gBattleState              = 0x8008C592; //type:u16 size:0x2
 D_8008C634                = 0x8008C634; //type:s32 size:0x4
+gInventoryScrollOffset    = 0x8008C760; //type:s32 size:0x4
+gHighlightedInventorySlot = 0x8008C764; //type:s32 size:0x4
 gInventory                = 0x8008CF78; //type:u8 size:0x96
 gCurrentBGM               = 0x8008FCC1; //type:s8
 gPlayBGM                  = 0x8008FCC2; //type:u16
@@ -728,4 +730,7 @@ gHUD_status_symbols_attributes = 0x803A6F70;
 gItemName_Spirit_Light         = 0x803A931C; //rom:0xD86BEC
 gItemNamePointers              = 0x803A9954;
 gItemDescriptionPtrs           = 0x803A99D4;
+
+gPal_Ci8_items_color           = 0x803AAC20; //rom:0xD3BE40
+gPal_Ci8_items_greyscale       = 0x803AAE20; //rom:0xD3C040
 
