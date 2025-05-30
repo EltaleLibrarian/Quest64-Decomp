@@ -130,29 +130,6 @@ typedef struct {
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002918.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002EA0.s")
-/*
-void func_80002EA0(void) {
-    SaveSpawnLocation* var_a1;
-    s32 i;
-    
-    gPlayerMainData.next->collisionSize = 50.0f;
-    gCurrentMap = gNextMap;
-    gCurrentSubmap = gNextSubmap;
-    D_80085368.unk8 = 0;
-
-    for (i = -1; i != 0; i++) {
-        if ((gNextMap == gSaveSpawnLocationTbl[i].map) && (gNextSubmap == gSaveSpawnLocationTbl[i].submap)) {
-            D_8007BA40 = gSaveSpawnLocationTbl[i].x;
-            D_8007BA44 = gSaveSpawnLocationTbl[i].z;
-            D_8007BA48 = gSaveSpawnLocationTbl[i].yrot;
-            D_80085368.unk8 = -1;
-            break;
-        } 
-    }
-    gNextMap = -1;
-    gNextSubmap = -1;
-}
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80002F60.s")
 
@@ -305,6 +282,7 @@ void func_80005740(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80005A10.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_80005C6C.s")
+//https://decomp.me/scratch/VFBkm
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_8000600C.s")
 
@@ -392,3 +370,4 @@ s32 func_80007030(s32 arg0, TransformAnim* arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800073CC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/33D0/func_800074A0.s")
+//https://decomp.me/scratch/bSlb6

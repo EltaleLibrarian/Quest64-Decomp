@@ -1,5 +1,14 @@
 #include "common.h"
 #include "191F0.h"
+#include "1BCD0.h"
+
+
+typedef struct {
+    s16 unk0;
+    char unk2[0xCE];
+}struct_800880A8;
+
+extern struct_800880A8 D_800880A8[4];
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_800185F0.s")
 
@@ -90,7 +99,10 @@ void func_80018DF4(Vec3f* arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019A98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CA4.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CA4.s")
+void func_80019CA4(s32 arg0) {
+    D_800880A8[arg0].unk0 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/191F0/func_80019CCC.s")
 

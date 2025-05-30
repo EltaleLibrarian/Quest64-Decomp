@@ -247,7 +247,7 @@ void func_800011DC(struct Struct_800011DC_arg0* arg0) {
         func_800228F8(sub->unk_58);
         if (gGameState & 2) {
             func_8002EAA0();
-        } else if (!(gGameState & 0x4000) && ((u16) D_8007B2E8 != 4)) {
+        } else if (!(gGameState & 0x4000) && (D_8007B2E8 != 4)) {
             func_8001E25C(sub->unk_58);
         }
         if (gGameState & 1) {

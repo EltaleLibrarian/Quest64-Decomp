@@ -27,42 +27,47 @@ typedef struct {
     s32 end;
 }fileBounds;
 
+typedef struct PlayerMainStats {
+    /*0x00*/ u16 unk0;
+    /*0x02*/ s16 unk2;
+    /*0x04*/ u16 currHP;
+    /*0x06*/ u16 maxHP;
+    /*0x08*/ u16 currMP;
+    /*0x0A*/ u16 maxMP;
+    /*0x0C*/ u16 agi;
+    /*0x0E*/ u16 def;
+    /*0x10*/ s32 exp;
+    /*0x14*/ s32 stone; //unused currency. Name derived from beta screenshots. 
+    /*0x18*/ f32 collisionSize;
+    /*0x1C*/ f32 unk1C; //height? 160.0f by default. Lowering it makes numbers appear lower when brian takes damage, and rocks come out of his chest. 
+    /*0x20*/ f32 unk20; //also affects collision size. May be zCollisionSize and the above are X and Y.
+    /*0x24*/ u8 elements[4];
+    /*0x28*/ u16 HPXP;
+    /*0x2A*/ u16 MPXP;
+    /*0x2C*/ u16 agiXP;
+    /*0x2E*/ u16 defXP;
+    /*0x30*/ u8 HPLevel;
+    /*0x31*/ u8 MPLevel;
+    /*0x32*/ u8 agiLevel;
+    /*0x33*/ u8 defLevel;
+    /*0x34*/ u8 spiritLevel;
+    /*0x35*/ u8 unk35;
+    /*0x36*/ u8 unk36;
+    /*0x37*/ u8 unk37;
+} PlayerMainStats;
+
 typedef struct PlayerMainData{
-    u16 unk0;
-    s16 unk2;
-    u16 currHP;
-    u16 maxHP;
-    u16 currMP;
-    u16 maxMP;
-    u16 agi;
-    u16 def;
-    s32 exp;
-    s32 stone; //unused currency. Name derived from beta screenshots. 
-    f32 collisionSize;
-    f32 unk1C; //height? 160.0f by default. Lowering it makes numbers appear lower when brian takes damage, and rocks come out of his chest.
-    f32 unk20; //also affects collision size. May be zCollisionSize and the above are X and Y.
-    u8 elements[4];
-    u16 HPXP;
-    u16 MPXP;
-    u16 agiXP;
-    u16 defXP;
-    u8 HPLevel;
-    u8 MPLevel;
-    u8 agiLevel;
-    u8 defLevel;
-    u8 spiritLevel;
-    u8 unk35;
-    u8 unk36;
-    u8 unk37;
-    u16 unk38;
-    s16 unk3A;
-    s16 unk3C;
-    s16 unk3E;
-    u16 unk40;
-    s16 unk42;
-    f32 unk44;
-    struct PlayerMainData* next;
+    /*0x00*/ PlayerMainStats playerStats;
+    /*0x38*/ u16 unk38;
+    /*0x3A*/ s16 unk3A;
+    /*0x3C*/ s16 unk3C; //animation related
+    /*0x3E*/ s16 unk3E; //side of door entered? 
+    /*0x40*/ u16 unk40;
+    /*0x42*/ s16 unk42;
+    /*0x44*/ char unk44[0x4];
+    /*0x48*/ void* PlayerMainData; //Seems to possibly be a pointer to either a monster, or the player. 
 }PlayerMainData;
+
 typedef struct {
     TransformAnim transformAnim;
     PlayerMainData* playerMainData;

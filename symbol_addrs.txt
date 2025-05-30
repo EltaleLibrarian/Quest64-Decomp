@@ -420,7 +420,7 @@ jtbl_80071EC0             = 0x80071EC0;
 gGameMode                 = 0x8007B2E0; //type:s16 size:0x2
 gGameState                = 0x8007B2E4; //type:s32 size:0x4
 gMasterGfxPos             = 0x8007B2FC;
-gPlayerMainData           = 0x8007BA80; //size:0x4C
+gPlayerMainData           = 0x8007BA80;
 gPlayerPosData            = 0x8007BACC;
 gNPCData                  = 0x8007BD30; //size:0x840
 
@@ -461,6 +461,8 @@ gCurrentBGM               = 0x8008FCC1; //type:s8
 gPlayBGM                  = 0x8008FCC2; //type:u16
 gBGMDelay                 = 0x8008FCC4; //type:u16
 D_8008FD00                = 0x8008FD00; //type:s8 size:0x4
+gControllerPakError       = 0x8008FD24; //type:s32 size:0x4
+gSelectedSaveSlot         = 0x8008FD2A;
 
 gSaveFileDataBuffer       = 0x80090460; //type:u8
 

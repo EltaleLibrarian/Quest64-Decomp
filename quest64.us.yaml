@@ -448,6 +448,35 @@ segments:
       - [0x871900, databin]
 
   - type: data
+    start: 0x873F20
+    vram: 0x8020E6F0
+    name: MelrodeNPCData
+    subsegments:
+      - [0x873F20, data]
+      - [0x8D3220, gfx]
+      - [0x8D32A0, vtx]
+      - [0x8D32F0, gfx]
+      - [0x8D3380, vtx]
+      - [0x8D33E0, gfx]
+      - [0x8D3450, vtx]
+      - [0x8D34F0, gfx]
+      - [0x8D3570, vtx]
+      - [0x8D35C0, gfx]
+      - [0x8D3650, vtx]
+      - [0x8D36B0, gfx]
+      - [0x8D3720, vtx]
+      - [0x8D37C0, gfx]
+      - [0x8D3840, vtx]
+      - [0x8D3890, gfx]
+      - [0x8D3920, vtx]
+      - [0x8D39E0, gfx]
+      - [0x8D3A40, data, names]
+
+  - type: databin
+    start: 0x8D3B90
+    name: DondoranNPCData
+
+  - type: data
     start: 0xD3BE40
     vram: 0x803AAC20
     name: InventoryPalettes

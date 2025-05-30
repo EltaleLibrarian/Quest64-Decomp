@@ -97,6 +97,8 @@ extern f32 D_8007BA44;
 extern f32 D_8007BA48;
 extern s32 D_8007BA4C;
 extern s32 gGameState;
+extern u16 D_800859E2;
+
 
 
 extern u8 gInventory[150];
@@ -274,10 +276,10 @@ s32 CheckIfHealingNeeded(TransformAnim* arg0, ItemData* arg1) {
 
     var_v1 = 0;
     player = arg0->unk64;
-    if ((arg1->itemArg1 != 0) && (player->maxHP != player->currHP)) {
+    if ((arg1->itemArg1 != 0) && (player->playerStats.maxHP != player->playerStats.currHP)) {
         var_v1 = 1;
     }
-    if ((arg1->itemArg2 != 0) && (player->maxMP != player->currMP)) {
+    if ((arg1->itemArg2 != 0) && (player->playerStats.maxMP != player->playerStats.currMP)) {
         var_v1 = 1;
     }
     return var_v1;
@@ -319,19 +321,19 @@ void UseHealingItem(TransformAnim* arg0, ItemData* item) {
 
 
     if (item->itemArg1 != 0) {
-        delta = (player->maxHP - player->currHP);
+        delta = (player->playerStats.maxHP - player->playerStats.currHP);
         if (item->itemArg1 < delta) {
             delta = item->itemArg1;
         }
-        player->currHP += delta;
+        player->playerStats.currHP += delta;
         func_80018DF4(arg0, 1, delta);
     }
     if (item->itemArg2 != 0) {
-        delta = (player->maxMP - player->currMP);
+        delta = (player->playerStats.maxMP - player->playerStats.currMP);
         if (item->itemArg2 < delta) {
             delta = item->itemArg2;
         }
-        player->currMP += delta;
+        player->playerStats.currMP += delta;
         func_80018DF4(arg0, 2, delta);
     }
     D_8008D010.width = D_803A9A68.healItemLightWidth;

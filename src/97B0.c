@@ -3,6 +3,7 @@
 #include "monsters.h"
 #include "1D160.h"
 #include "bgm.h"
+#include "animation.h"
 
 typedef struct {
     u16 unk0; //counts up during boss attack.
@@ -11,6 +12,16 @@ typedef struct {
     void* unk8; //pointer to boss data in normal enemy data memory location. 
     void* unkC; //pointer to animation struct for boss.    
 }bossAnimationSomething;
+
+typedef struct {
+    char unk0[0x90];
+    u16 unk90;
+    char unk92[0x82];
+    u16 unk114;
+    char unk116[0x4];
+    u16 unk11A;
+}struct_8000AC84;
+
 extern bossAnimationSomething D_8007D0C0;
 extern void* D_80054640[4];
 extern void* D_8007C9BC[]; //enemy animation struct
@@ -58,11 +69,24 @@ extern void* D_8007C9BC[]; //enemy animation struct
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000ABF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000AC84.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000AC84.s")
+u32 func_8000AC84(struct_8000AC84* arg0) {
+    u32 var_v1;
+
+    var_v1 = (((s32) ((var_v1 = arg0->unk114) * arg0->unk11A)) >> 4) & 0xFFFF;
+    if (arg0->unk90 & 1) {
+        var_v1 = (var_v1 >> 1) & 0xFFFF;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000ACC0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B110.s")
+//#pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B110.s")
+void func_8000B110(TransformAnim* arg0) {
+    func_800208B8(arg0);
+    func_800268D4(0U, 0x17, 0xFFU);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/97B0/func_8000B140.s")
 

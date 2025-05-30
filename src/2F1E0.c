@@ -122,8 +122,33 @@ void func_8002E628(s32 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030668.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030754.s")
-
+//#pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030754.s")
+s32 func_80030754(s32 arg0, s32 arg1) {
+    Message *var_a1;
+    s32 i;
+    s32 ret = -1;
+    
+    if (arg0 >= 0)
+    {
+        for(i = 0, var_a1 = D_800905E0; i < 4; i++, var_a1++) {
+            if(arg0 == var_a1->unkE) {
+                ret = i;
+                break;
+            }  
+        }
+    }
+    else
+    {
+        for(i = 0, var_a1 = D_800905E0; i < 4; i++, var_a1++) {
+            if((var_a1->unk0 & 7) == arg1) {
+                ret = i;
+                break;
+            }
+        }
+    }
+    return ret;
+}
+  
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_800307D8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/2F1E0/func_80030BF0.s")

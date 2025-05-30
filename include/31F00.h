@@ -10,7 +10,7 @@ extern s8 gCurrControllerNum;
 extern OSMesgQueue gSIMessageQ;
 
 extern OSMesgQueue D_80092880;
-extern OSContPad gPad;
+extern OSContPad gPad[4];
 extern s8 gPadStickX;
 extern s8 gPadStickY;
 extern u16 gPadButtonPressed;
