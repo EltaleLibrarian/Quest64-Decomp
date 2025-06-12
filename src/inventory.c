@@ -357,7 +357,7 @@ void UseWings(TransformAnim* arg0, ItemData* arg1) {
     D_8007BA44 = (&D_803A9190)[arg1->itemArg1].zpos;
     D_8007BA48 = (&D_803A9190)[arg1->itemArg1].yrot;
     D_8007BA4C = 0x108;
-    gPlayerMainData.unk3E = 0;
+    gPlayerMainData.playerAnim.mapEntryAnimation = 0;
     D_8007B2F0 = 1;
     temp = &D_803A9A54[D_803A9A68.unk10];
     D_8008D010.width = D_803A9A68.wingLightWidth;

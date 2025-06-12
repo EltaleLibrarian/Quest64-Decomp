@@ -56,16 +56,20 @@ typedef struct PlayerMainStats {
     /*0x37*/ u8 unk37;
 } PlayerMainStats;
 
+typedef struct {
+    /*0x00*/ u16 unk0;
+    /*0x02*/ u16 staffTarget;
+    /*0x04*/ u16 animFramesRemaining;
+    /*0x06*/ u16 mapEntryAnimation;
+    /*0x08*/ u16 unk8;
+    /*0x0A*/ u16 unkA;
+    /*0x0C*/ f32 battleFenceSize;
+    /*0x10*/ PlayerMainStats* PlayerMainStats;
+}PlayerAnimData; //Not actually the right name, but everything *technically* has to do with animation
+
 typedef struct PlayerMainData{
-    /*0x00*/ PlayerMainStats playerStats;
-    /*0x38*/ u16 unk38;
-    /*0x3A*/ s16 unk3A;
-    /*0x3C*/ s16 unk3C; //animation related
-    /*0x3E*/ s16 unk3E; //side of door entered? 
-    /*0x40*/ u16 unk40;
-    /*0x42*/ s16 unk42;
-    /*0x44*/ char unk44[0x4];
-    /*0x48*/ void* PlayerMainData; //Seems to possibly be a pointer to either a monster, or the player. 
+    /*0x00*/ PlayerMainStats playerStats; //0x8007BA80
+    /*0x38*/ PlayerAnimData playerAnim; //0x8007BAB8 I don't like the name.
 }PlayerMainData;
 
 typedef struct {
@@ -78,8 +82,9 @@ typedef struct {
 //symbols
 extern SaveSpawnLocation gSaveSpawnLocationTbl[17];
 extern unk80085368 D_80085368;
-extern PlayerMainData gPlayerMainData;
-extern PlayerPosData gPlayerPosData; 
+extern PlayerMainData gPlayerMainData; //0x8007BA80
+extern PlayerPosData gPlayerPosData;   //0x8007BACC
+extern PlayerAnimData D_8007BAB8;
 extern fileBounds D_80053F58[];
 
 

@@ -20,7 +20,7 @@ typedef struct s_Animation {
 /*0x58*/    u16 animFramerate;
 /*0x5A*/    s16 unk5A;
 /*0x5C*/    u16 unk5C;
-/*0x5E*/    s16 unk5E;
+/*0x5E*/    u16 unk5E;
 /*0x60*/    u16 unk60;
 /*0x62*/    u16 unk62;
 /*0x64*/    void* unk64; //points to beginning of actor using this struct. 

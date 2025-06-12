@@ -105,7 +105,7 @@ void func_80000EEC(void) {
     D_8007BA44 = 0.0f;
     D_8007BA48 = M_PI/2;
     D_8007BA4C = 0x108;
-    gPlayerMainData.unk3E = 0;
+    gPlayerMainData.playerAnim.mapEntryAnimation = 0;
     D_8007B2E8 = 1;
     D_8007B2F0 = 0;
     D_8007B344 = 0;

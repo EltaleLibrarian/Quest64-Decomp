@@ -736,3 +736,4 @@ gItemDescriptionPtrs           = 0x803A99D4;
 gPal_Ci8_items_color           = 0x803AAC20; //rom:0xD3BE40
 gPal_Ci8_items_greyscale       = 0x803AAE20; //rom:0xD3C040
 
+gDL_Speech_bubble              = 0x803A8B90;
